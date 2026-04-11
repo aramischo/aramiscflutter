@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "128471507533",
+    "project_id": "aramiscsys",
+    "storage_bucket": "aramiscsys.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:128471507533:android:58297c726be8442ea5b204",
+        "android_client_info": {
+          "package_name": "com.edu.aramiscsys.aramisc"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRyJGPyNb8ls1NSvdB5YCatxdXPXHvAiY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
