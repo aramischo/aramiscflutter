@@ -134,7 +134,7 @@ dependency_overrides:
   file: ^6.1.4
   flutter_html: ^3.0.0-alpha.5
   # stripe_sdk: ^5.0.0-nullsafety.1
-  #win32: ^5.5.4
+  win32: ^5.5.4
 #  flutter_inappwebview: ^6.0.0
 
 
