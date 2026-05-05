@@ -3,7 +3,7 @@ workflows:
     name: iOS Build
     max_build_duration: 60
     environment:
-      flutter: 3.24.5    # ← changez 3.22.3 en 3.24.5
+      flutter: 3.24.5
       xcode: 16.4
       cocoapods: default
     scripts:
@@ -15,7 +15,6 @@ workflows:
           find . -name "Podfile" -execdir pod install \;
       - name: Build iOS
         script: |
-          flutter build ios --release --no-codesign \
-            --bundle-identifier com.edu.aramiscsys.aramisc
+          flutter build ios --release --no-codesign
     artifacts:
       - build/ios/iphoneos/Runner.app
