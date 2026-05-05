@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:aramisc/screens/virtual_class/views/jitsi/JitsiMeetClass.dart';
+//import 'package:aramisc/screens/virtual_class/views/jitsi/JitsiMeetClass.dart';
 import 'package:aramisc/utils/StudentRecordWidget.dart';
 import 'package:aramisc/utils/model/StudentRecord.dart';
 import 'package:intl/intl.dart';

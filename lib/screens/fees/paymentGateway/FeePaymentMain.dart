@@ -19,7 +19,7 @@ import 'package:http/http.dart' as http;
 import 'package:aramisc/config/app_config.dart';
 import 'package:aramisc/controller/user_controller.dart';
 import 'package:aramisc/screens/fees/controller/fetch_student_fee.dart';
-import 'package:aramisc/screens/fees/paymentGateway/RazorPay/razorpay_service.dart';
+//import 'package:aramisc/screens/fees/paymentGateway/RazorPay/razorpay_service.dart';
 import 'package:aramisc/screens/fees/paymentGateway/paypal/paypal_payment.dart';
 import 'package:aramisc/utils/CustomAppBarWidget.dart';
 import 'package:aramisc/utils/Utils.dart';
@@ -169,50 +169,7 @@ class _FeePaymentMainState extends State<FeePaymentMain> {
             userDetails: _userDetails,
             amount: widget.amount,
           )));
-    } else if (payment.method == "Khalti") {
-      Navigator.push(
-          context,
-          ScaleRoute(
-              page: KhaltiPaymentScreen(
-            id: widget.id,
-            paidBy: _id ?? '',
-            fee: widget.fee,
-            email: _email ?? '',
-            method: 'Khalti Payment',
-            userDetails: _userDetails,
-            amount: widget.amount,
-          )));
-    } else if (payment.method == "RazorPay") {
-      await paymentDataSave("RazorPay").then((value) async {
-        var result = await callRazorPayService();
-        if (result == true) {
-          await paymentCallBack('RazorPay', reference: value, status: result);
-        }
-      });
     }
-  }
-
-  Future<bool?> callRazorPayService() async {
-    await RazorpayServices().openRazorpay(
-      razorpayKey: "$razorPayApiKey",
-      contactNumber: "",
-      emailId: _email ?? '',
-      amount: double.parse(widget.amount.toString()),
-      userName: "",
-      successListener: (PaymentResponse paymentResponse) {
-        /// here manage code for success payment. ///
-        if (paymentResponse.paymentStatus) {
-          return true;
-        }
-      },
-      failureListener: (PaymentResponse paymentResponse) {
-        /// here manage code for failure or error in payment. ///
-        if (paymentResponse.paymentStatus) {
-          return false;
-        }
-      },
-    );
-    return null;
   }
 
   Map<String, dynamic>? paymentIntentData;
@@ -371,8 +328,8 @@ class _FeePaymentMainState extends State<FeePaymentMain> {
                       'Paystack',
                       'Stripe',
                       'Xendit',
-                      'Khalti',
-                      'RazorPay',
+                      //'Khalti',
+                      //'RazorPay',
                     ];
 
                     // Check if the payment method is valid

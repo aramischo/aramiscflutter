@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 import 'package:aramisc/config/app_config.dart';
 import 'package:aramisc/controller/user_controller.dart';
 import 'package:aramisc/screens/fees/controller/fetch_student_fee.dart';
-import 'package:aramisc/screens/fees/paymentGateway/RazorPay/razorpay_service.dart';
+//import 'package:aramisc/screens/fees/paymentGateway/RazorPay/razorpay_service.dart';
 import 'package:aramisc/screens/fees/paymentGateway/khaltiPayment/khalti_payment_screen.dart';
 import 'package:aramisc/screens/fees/paymentGateway/paypal/paypal_payment.dart';
 import 'package:aramisc/screens/fees/paymentGateway/stripe/stripe_payment.dart';
@@ -239,15 +239,7 @@ class StudentFeesController extends GetxController {
                 isPaymentProcessing.value = false;
                 CustomSnackBar().snackBarError(response.message.toString());
               }
-            } else if (selectedPaymentMethod.value == "Khalti") {
-              Get.to(() => KhaltiInvoicePayment(
-                    method: "${data['description']}",
-                    amount: "${data['amount']}",
-                  ));
-            } else if (selectedPaymentMethod.value == "RazorPay") {
-              await callRazorPayService(data['amount'], data['transcationId']);
             }
-
             // await confirmPaymentCallBack(data['transcationId'].toString());
           }
         } else {
@@ -306,30 +298,6 @@ class StudentFeesController extends GetxController {
     } catch (e) {
       isPaymentProcessing(false);
     }
-  }
-
-  Future callRazorPayService(String amount, trxId) async {
-    await RazorpayServices().openRazorpay(
-      razorpayKey: razorPayApiKey,
-      contactNumber:
-          addPaymentModel.value.invoiceInfo?.studentInfo?.user?.phoneNumber ??
-              "",
-      emailId:
-          addPaymentModel.value.invoiceInfo?.studentInfo?.user?.email ?? "",
-      amount: double.parse(amount.toString()),
-      userName: "",
-      successListener: (PaymentResponse paymentResponse) async {
-        if (paymentResponse.paymentStatus) {
-          await confirmPaymentCallBack(trxId.toString());
-        }
-      },
-      failureListener: (PaymentResponse paymentResponse) {
-        if (!paymentResponse.paymentStatus) {
-          isPaymentProcessing.value = false;
-          CustomSnackBar().snackBarError(paymentResponse.message);
-        }
-      },
-    );
   }
 
   Future<StudentAddPaymentModel> getFeesInvoice(invoiceId) async {

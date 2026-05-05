@@ -63,11 +63,6 @@
             android:name="flutterEmbedding"
             android:value="2" />
 
-        <service
-            android:name="org.jitsi.meet.sdk.ConnectionService"
-            android:exported="true">
-        </service>
-
             <provider
             android:name="vn.hunghd.flutterdownloader.DownloadedFileProvider"
             android:authorities="${applicationId}.flutter_downloader.provider"

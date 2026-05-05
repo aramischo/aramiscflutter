@@ -223,15 +223,6 @@ class StudentWalletController extends GetxController {
                 isPaymentProcessing.value = false;
                 CustomSnackBar().snackBarError(response.message.toString());
               }
-            } else if (selectedPaymentMethod.value == "Khalti") {
-              Get.to(() => KhaltiInvoicePayment(
-                    method: "${data['description']}",
-                    amount: "${data['amount']}",
-                  ));
-            } else if (selectedPaymentMethod.value == "Razorpay") {
-              await callRazorPayService(
-                  double.parse(data['amount'].toString()).toPrecision(2),
-                  data['id'].toString());
             }
           }
         } else {
@@ -302,29 +293,6 @@ class StudentWalletController extends GetxController {
       debugPrint(e.toString());
       debugPrint(t.toString());
     } finally {}
-  }
-
-  Future callRazorPayService(double amount, trxId) async {
-    await RazorpayServices().openRazorpay(
-      razorpayKey: razorPayApiKey,
-      contactNumber: _phone.value ?? "",
-      emailId: _email.value ?? "",
-      amount: double.parse(amount.toString()),
-      userName: "",
-      successListener: (PaymentResponse paymentResponse) async {
-        if (paymentResponse.paymentStatus) {
-          await confirmWalletPayment(
-              id: trxId.toString(),
-              amount: double.parse(amount.toString()).toPrecision(2));
-        }
-      },
-      failureListener: (PaymentResponse paymentResponse) {
-        if (!paymentResponse.paymentStatus) {
-          isPaymentProcessing.value = false;
-          CustomSnackBar().snackBarError(paymentResponse.message);
-        }
-      },
-    );
   }
 
   final Rx<String> _email = "".obs;

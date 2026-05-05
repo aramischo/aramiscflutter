@@ -7,7 +7,7 @@ import 'package:aramisc/utils/CustomExpansionTileCard.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 import 'views/bbb/bbb_virtual_class.dart';
-import 'views/jitsi/jitsi_virtual_class.dart';
+//import 'views/jitsi/jitsi_virtual_class.dart';
 import 'views/zoom/zoom_virtual_class.dart';
 
 class VirtualClassMain extends StatelessWidget {
@@ -136,56 +136,7 @@ class VirtualClassMain extends StatelessWidget {
                 const SizedBox(
                   height: 20,
                 ),
-                systemController.systemSettings.value.data!.jitsi!=0
-                    ? CustomExpansionTileCard(
-                        title: const Text("Jitsi"),
-                        trailing: Icon(
-                          Icons.arrow_forward_ios,
-                          size: 14,
-                          color: Theme.of(context).primaryColor,
-                        ),
-                        children: [
-                          ListTile(
-                            onTap: () {
-                              PersistentNavBarNavigator.pushNewScreen(
-                                context,
-                                screen: const JitsiVirtualClass(type: "class"),
-                                withNavBar: false,
-                              );
-                            },
-                            title: Text(
-                              "Virtual Class",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleMedium
-                                  ?.copyWith(fontSize: 14),
-                            ),
-                          ),
-                          userController.role.value != "2"
-                              ? ListTile(
-                                  onTap: () {
-                                    PersistentNavBarNavigator.pushNewScreen(
-                                      context,
-                                      screen:
-                                          const JitsiVirtualClass(type: "meeting"),
-                                      withNavBar: false,
-                                    );
-                                  },
-                                  title: Text(
-                                    "Virtual Meeting",
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .titleMedium
-                                        ?.copyWith(fontSize: 14),
-                                  ),
-                                )
-                              : const SizedBox(),
-                        ],
-                      )
-                    : const SizedBox.shrink(),
-
-
-                if(systemController.systemSettings.value.data!.zoom==0 && systemController.systemSettings.value.data!.bbb==0 && systemController.systemSettings.value.data!.jitsi==0)
+                if(systemController.systemSettings.value.data!.zoom==0 && systemController.systemSettings.value.data!.bbb==0)
                  const Center(
                     child: Text(
                       'Class no available',
