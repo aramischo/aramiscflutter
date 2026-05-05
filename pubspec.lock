@@ -1009,10 +1009,10 @@ packages:
     dependency: "direct main"
     description:
       name: google_fonts
-      sha256: b1ac0fe2832c9cc95e5e88b57d627c5e68c223b9657f4b96e1487aa9098c7b82
+      sha256: df9763500dadba0155373e9cb44e202ce21bd9ed5de6bdbd05c5854e86839cb8
       url: "https://pub.dev"
     source: hosted
-    version: "6.2.1"
+    version: "6.3.0"
   graphs:
     dependency: transitive
     description:
@@ -1481,10 +1481,10 @@ packages:
     dependency: "direct main"
     description:
       name: pdfrx
-      sha256: "3f9439e02f1bc82393225fe825867246b9a476ae5bf65b6a3e0a9ea4032aa8e9"
+      sha256: f062ce3b5c8e51fcea5a393f050aab35e977b9f5256439afab722a19c69d791f
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.88"
+    version: "1.0.101"
   permission_handler:
     dependency: "direct main"
     description:
@@ -2151,10 +2151,10 @@ packages:
     dependency: transitive
     description:
       name: web
-      sha256: d43c1d6b787bf0afad444700ae7f4db8827f701bc61c255ac8d328c6f4d52062
+      sha256: "868d88a33d8a87b18ffc05f9f030ba328ffefba92d6c127917a2ba740f9cfe4a"
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.0"
+    version: "1.1.1"
   web_socket:
     dependency: transitive
     description:
