@@ -1,6 +1,6 @@
 workflows:
   ios-workflow:
-    name: iOS Build
+    name: iOS Production Build
     max_build_duration: 60
 
     environment:
@@ -8,22 +8,43 @@ workflows:
       xcode: 16.4
       cocoapods: 1.15.2
 
+    cache:
+      cache_paths:
+        - ~/.pub-cache
+        - ios/Pods
+
     scripts:
-      - name: Deep Clean
+
+      - name: Flutter Clean
         script: |
+          flutter --version
           flutter clean
+
+      - name: Remove iOS Pods & Locks
+        script: |
           rm -rf ios/Pods
           rm -rf ios/Podfile.lock
           rm -rf ~/Library/Developer/Xcode/DerivedData
 
-      - name: Install Pods
+      - name: Get Flutter Packages
         script: |
           flutter pub get
+
+      - name: Install CocoaPods Dependencies
+        script: |
           cd ios
           pod repo update
           pod install
           cd ..
 
-      - name: Build
+      - name: Build iOS (Release)
         script: |
           flutter build ios --release --no-codesign
+
+    artifacts:
+      - build/ios/iphoneos/Runner.app
+
+    publishing:
+      email:
+        recipients:
+          - your-email@example.com
