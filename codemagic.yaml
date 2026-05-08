@@ -1,44 +1,27 @@
 workflows:
-  ios-workflow:
-    name: iOS Production Build
+  ios-release:
+    name: iOS Release
     max_build_duration: 60
-
     environment:
       flutter: 3.24.3
-      xcode: 16.4
-      cocoapods: 1.15.2
-
-    cache:
-      cache_paths:
-        - ~/.pub-cache
-        - ios/Pods
+      xcode: 15.3
+      cocoapods: default
 
     scripts:
-      - name: Flutter Clean
+      - name: Clean
         script: |
-          flutter --version
           flutter clean
-
-      - name: Remove Pods & DerivedData
-        script: |
-          rm -rf ios/Pods
-          rm -rf ios/Podfile.lock
-          rm -rf ~/Library/Developer/Xcode/DerivedData
-
-      - name: Get Packages
-        script: |
           flutter pub get
 
       - name: Install Pods
         script: |
           cd ios
-          pod repo update
-          pod install
+          pod install --repo-update
           cd ..
 
-      - name: Build iOS Release
+      - name: Build iOS
         script: |
           flutter build ios --release --no-codesign
 
     artifacts:
-      - build/ios/iphoneos/Runner.app
+      - build/ios/iphoneos/*.app
