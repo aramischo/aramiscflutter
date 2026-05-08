@@ -1,6 +1,6 @@
 workflows:
   ios-build:
-    name: iOS Clean Simulator Build
+    name: iOS Simulator Build
     max_build_duration: 60
 
     environment:
@@ -8,35 +8,21 @@ workflows:
       xcode: latest
       cocoapods: default
 
-    cache:
-      cache_paths:
-        - ~/.pub-cache
-
     scripts:
-      - name: Full Clean
+      - name: Clean & Get
         script: |
           flutter clean
-          rm -rf ios/Pods
-          rm -rf ios/.symlinks
-          rm -rf ios/Flutter/Flutter.framework
-          rm -rf ios/Flutter/Flutter.podspec
-          rm -rf ~/Library/Developer/Xcode/DerivedData
-          rm -f ios/Podfile.lock
-
-      - name: Get Packages
-        script: |
           flutter pub get
 
-      - name: Reinstall Pods
+      - name: Install Pods
         script: |
           cd ios
-          pod deintegrate
           pod install --repo-update
           cd ..
 
-      - name: Build Simulator (no signing)
+      - name: Build Simulator (Debug)
         script: |
-          flutter build ios --simulator --release
+          flutter build ios --simulator
 
     artifacts:
       - build/ios/iphonesimulator/*.app
