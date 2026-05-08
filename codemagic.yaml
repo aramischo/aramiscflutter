@@ -5,7 +5,7 @@ workflows:
 
     environment:
       flutter: stable
-      xcode: 15.2
+      xcode: latest
       cocoapods: default
 
     cache:
