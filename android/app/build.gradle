@@ -13,11 +13,6 @@ if (localPropertiesFile.exists()) {
     }
 }
 
-// def flutterRoot = localProperties.getProperty('flutter.sdk')
-// if (flutterRoot == null) {
-//     throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
-// }
-
 def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
 if (flutterVersionCode == null) {
     flutterVersionCode = '1'
@@ -27,44 +22,85 @@ def flutterVersionName = localProperties.getProperty('flutter.versionName')
 if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
-def flutterMinSdkVersion = localProperties.getProperty('flutter.flutterMinSdkVersion')
-if (flutterMinSdkVersion == null) {
-    flutterMinSdkVersion = '16'
-}
-
-def flutterTargetSdkVersion = localProperties.getProperty('flutter.flutterTargetSdkVersion')
-if (flutterTargetSdkVersion == null) {
-    flutterTargetSdkVersion = '31'
-}
-
-// apply plugin: 'com.android.application'
-// apply plugin: 'kotlin-android'
-// apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
-// apply plugin: 'com.google.gms.google-services'
 
 def keystoreProperties = new Properties()
 def keystorePropertiesFile = rootProject.file('key.properties')
 if (keystorePropertiesFile.exists()) {
     keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 }
+
 android {
     namespace "com.edu.aramiscsys.aramisc"
-    compileSdkVersion 34
-    ndkVersion = "25.1.8937393"
-
-    compileOptions {
-        coreLibraryDesugaringEnabled true
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
+    compileSdkVersion 36
+    ndkVersion "29.0.14033849"
 
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_17
     }
 
     sourceSets {
+
         main.java.srcDirs += 'src/main/kotlin'
     }
+
+    defaultConfig {
+        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        applicationId "com.edu.aramiscsys.aramisc"
+        // You can update the following values to match your application needs.
+        // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
+        minSdkVersion 24
+        multiDexEnabled true
+        targetSdkVersion 35
+        versionCode 16
+        versionName '1.0.4'
+
+        ndk {
+            abiFilters "armeabi-v7a", "arm64-v8a"
+        }
+
+        externalNativeBuild {
+            cmake {
+                arguments "-DANDROID_SUPPORT_FLEXIBLE_PAGE_SIZES=ON"
+                arguments "-DANDROID_ARM_PAGE_SIZE=16384"
+            }
+        }
+
+
+    }
+
+    if (project.hasProperty("nativeBuildEnabled") && project.nativeBuildEnabled == "true") {
+        externalNativeBuild {
+            cmake {
+                path "CMakeLists.txt"
+            }
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+        coreLibraryDesugaringEnabled true
+    }
+
+    signingConfigs {
+        release {
+            keyAlias = keystoreProperties['keyAlias']
+            keyPassword = keystoreProperties['keyPassword']
+            storeFile = keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
+            storePassword = keystoreProperties['storePassword']
+        }
+    }
+
+    
+    buildTypes {
+        release {
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+//            signingConfig = signingConfigs.debug
+           signingConfig = signingConfigs.release
+        }
+    }
+
 
     packagingOptions {
         pickFirst 'lib/x86/libc++_shared.so'
@@ -76,57 +112,17 @@ android {
         pickFirst 'lib/x86/libfbjni.so'
         pickFirst 'lib/x86_64/libfbjni.so'
 
-    }
-    rootProject.ext.ffmpegKitPackage = "video"
-
-    defaultConfig {
-        applicationId "com.edu.aramiscsys.aramisc"
-        minSdkVersion 24
-        targetSdkVersion 35
-        versionCode 62
-        versionName '3.0.2'
-        multiDexEnabled true
-
-    }
-
-
-    signingConfigs {
-        release {
-            keyAlias = keystoreProperties['keyAlias']
-            keyPassword = keystoreProperties['keyPassword']
-            storeFile = keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
-            storePassword = keystoreProperties['storePassword']
+        jniLibs {
+            useLegacyPackaging = false
         }
-    }
-    buildTypes {
-        release {
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 
-            // signingConfig = signingConfigs.debug
-            signingConfig = signingConfigs.release
-            minifyEnabled false
-            shrinkResources false
-        }
     }
 
-    // signingConfigs{
-    //     release {
-    //         keyAlias = keystoreProperties['keyAlias']
-    //         keyPassword = keystoreProperties['keyPassword']
-    //         storeFile = keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
-    //         storePassword = keystoreProperties['storePassword']
-    //     }
+    aaptOptions {
+        // Forces 16 KB alignment for assets and resources
+        cruncherEnabled = false
+    }
 
-    //     buildTypes {
-    //         release {
-    //             signingConfig signingConfigs.release
-    //             minifyEnabled false
-    //             shrinkResources false
-    //             // useProguard true
-    //             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-    //         }
-    //     }
-    // }
 }
 
 flutter {
@@ -134,16 +130,8 @@ flutter {
 }
 
 dependencies {
-    // implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    implementation 'com.android.support:multidex:1.0.3'
-    implementation platform('com.google.firebase:firebase-bom:27.0.0')
-    implementation 'com.google.firebase:firebase-analytics'
-    implementation 'org.jfrog.cardinalcommerce.gradle:cardinalmobilesdk:2.2.7-5'
-    implementation ('com.google.android.exoplayer:exoplayer:2.17.0')
-    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.2.2'
-
+    
+   // implementation(platform("com.google.firebase:firebase-bom:32.7.1"))
+    implementation 'androidx.multidex:multidex:2.0.1'
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.1.4'
 }
-

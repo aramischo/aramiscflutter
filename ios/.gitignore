@@ -8,7 +8,7 @@
 .sconsign.dblite
 .tags*
 **/.vagrant/
-**/DerivedData/
+**/DerivedData/a
 Icon?
 **/Pods/
 **/.symlinks/
