@@ -12,8 +12,8 @@
         "lib/firebase_options.dart": {
           "projectId": "aramiscsys",
           "configurations": {
-            "android": "1:29155114472:android:e8c0c97f5b786d7976b85d",
-            "ios": "1:128471507533:ios:4f880218f0cd8a6ba5b204"
+            "android": "1:128471507533:android:58297c726be8442ea5b204",
+            "ios": "1:128471507533:android:58297c726be8442ea5b204"
           }
         }
       }
