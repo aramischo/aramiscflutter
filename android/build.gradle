@@ -1,8 +1,23 @@
-
 allprojects {
     repositories {
         google()
         mavenCentral()
+        maven {
+            url "https://cardinalcommerceprod.jfrog.io/artifactory/android"
+            credentials {
+                username 'cybersource_xendit_payfac_cards'
+                password 'AKCp8k7kDxqgxY63sahozmx9h2wLR8QikWwSPnQyZZxy63juWsQJ8PevpWY6s3eREW4rrzTyj'
+            }
+        }
+    }
+
+    // Force Kotlin 2.3.0 partout pour éviter les conflits de versions transitives
+    configurations.all {
+        resolutionStrategy {
+            force "org.jetbrains.kotlin:kotlin-stdlib:2.1.0"
+            force "org.jetbrains.kotlin:kotlin-stdlib-jdk7:2.1.0"
+            force "org.jetbrains.kotlin:kotlin-stdlib-jdk8:2.1.0"
+        }
     }
 
     subprojects {
@@ -18,7 +33,7 @@ allprojects {
     }
 
     tasks.withType(JavaCompile) {
-        options.compilerArgs << '-Xlint:-options' 
+        options.compilerArgs << '-Xlint:-options'
     }
 }
 

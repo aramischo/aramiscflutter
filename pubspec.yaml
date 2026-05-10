@@ -61,7 +61,8 @@ dependencies:
       url: https://github.com/spn23/pdfrx.git
 
   # Payment Gateways
-  flutter_stripe: ^12.5.0
+  #flutter_stripe: ^12.5.0
+  flutter_stripe: ^10.2.0
 #  stripe_sdk: ^5.0.0
   flutter_paypal_checkout:
     git:

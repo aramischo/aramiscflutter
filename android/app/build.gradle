@@ -34,6 +34,12 @@ android {
     compileSdkVersion 36
     ndkVersion "29.0.14033849"
 
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "Aramisc.apk"
+        }
+    }
+
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_17
     }
