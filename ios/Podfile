@@ -39,6 +39,7 @@ post_install do |installer|
 
     target.build_configurations.each do |config|
       # ✅ Global build settings fixes
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
       config.build_settings['SWIFT_ENABLE_EXPLICIT_MODULE_BUILD'] = 'NO'
       config.build_settings['SWIFT_ENABLE_EXPLICIT_MODULES'] = 'NO'
       config.build_settings['CLANG_ENABLE_MODULES'] = 'YES'
