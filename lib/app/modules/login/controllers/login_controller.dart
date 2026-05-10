@@ -4,6 +4,7 @@ import 'package:aramisc/app/utilities/widgets/loader/loading.controller.dart';
 import 'package:aramisc/config/global_variable/app_settings_controller.dart';
 import 'package:aramisc/config/global_variable/global_variable_controller.dart';
 import 'package:aramisc/domain/core/model/profile_ui_model.dart';
+import 'package:aramisc/push_notification/app_push_notification.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import '../../../../domain/base_client/base_client.dart';
@@ -14,7 +15,7 @@ import '../../../utilities/message/snack_bars.dart';
 
 class LoginController extends GetxController {
   GlobalRxVariableController globalRxVariableController =
-      Get.find<GlobalRxVariableController>();
+  Get.find<GlobalRxVariableController>();
 
   RxBool isLoading = false.obs;
   RxBool isObscureText = true.obs;
@@ -25,6 +26,26 @@ class LoginController extends GetxController {
   TextEditingController emailTextController = TextEditingController();
   TextEditingController passwordTextController = TextEditingController();
   final GetStorage _box = GetStorage();
+
+  /// Abonne l'utilisateur aux topics Firebase selon son rôle
+  Future<void> _subscribeToRoleTopics(int roleId) async {
+    await subscribeToTopic('all_users'); // tous les utilisateurs
+
+    switch (roleId) {
+      case 1:
+        await subscribeToTopic('admins');
+        break;
+      case 2:
+        await subscribeToTopic('students');
+        break;
+      case 3:
+        await subscribeToTopic('parents');
+        break;
+      case 4:
+        await subscribeToTopic('teachers');
+        break;
+    }
+  }
 
   void userLogin({required String email, required String password}) async {
     ProfileInfoModel profileInfoModel;
@@ -64,7 +85,9 @@ class LoginController extends GetxController {
           'Authorization': Get.find<GlobalRxVariableController>().token.value!,
         };
 
-        if (profileInfoModel.data.user.roleId == 2) {
+        final roleId = profileInfoModel.data.user.roleId;
+
+        if (roleId == 2) {
           globalRxVariableController.studentId.value =
               profileInfoModel.data.user.studentId;
           globalRxVariableController.roleName.value = 'Student';
@@ -72,27 +95,40 @@ class LoginController extends GetxController {
           debugPrint('Student Id ::: ${globalRxVariableController.studentId}');
         }
 
-        if (profileInfoModel.data.user.roleId == 1 ||
-            profileInfoModel.data.user.roleId == 4) {
+        if (roleId == 1 || roleId == 4) {
           globalRxVariableController.staffId.value =
               profileInfoModel.data.user.staffId;
-          profileInfoModel.data.user.roleId == 1
+          roleId == 1
               ? globalRxVariableController.roleName.value = 'Admin'
               : globalRxVariableController.roleName.value = 'Teacher';
-
           debugPrint(
               'Admin/Teacher Id ::: ${globalRxVariableController.staffId}');
         }
 
-        if (profileInfoModel.data.user.roleId == 3) {
+        if (roleId == 3) {
           globalRxVariableController.parentId.value =
               profileInfoModel.data.user.parentId;
           globalRxVariableController.roleName.value = 'Parent';
           debugPrint('Parent Id ::: ${globalRxVariableController.parentId}');
         }
 
+        // Abonnement aux topics Firebase selon le rôle
+        await _subscribeToRoleTopics(roleId);
+
+        // Envoyer le FCM token au backend
+        final fcmToken = await getFcmDeviceToken();
+        if (fcmToken.isNotEmpty) {
+          // TODO: envoyer fcmToken à votre API backend
+          // await BaseClient().postData(
+          //   url: AramiscApi.updateFcmToken(),
+          //   header: GlobalVariable.header,
+          //   payload: {"fcm_token": fcmToken},
+          // );
+          debugPrint('FCM Token envoyé au backend: $fcmToken');
+        }
+
         if (status) {
-          AppFunctions().getFunctions(profileInfoModel.data.user.roleId);
+          AppFunctions().getFunctions(roleId);
         }
         Get.find<AppSettingsController>().getGeneralSettings();
       } else {
@@ -143,7 +179,9 @@ class LoginController extends GetxController {
           'Authorization': Get.find<GlobalRxVariableController>().token.value!,
         };
 
-        if (profileInfoModel.data.user.roleId == 2) {
+        final roleId = profileInfoModel.data.user.roleId;
+
+        if (roleId == 2) {
           globalRxVariableController.studentId.value =
               profileInfoModel.data.user.studentId;
           globalRxVariableController.isStudent.value = true;
@@ -151,26 +189,28 @@ class LoginController extends GetxController {
           debugPrint('Student Id ::: ${globalRxVariableController.studentId}');
         }
 
-        if (profileInfoModel.data.user.roleId == 1 ||
-            profileInfoModel.data.user.roleId == 4) {
+        if (roleId == 1 || roleId == 4) {
           globalRxVariableController.staffId.value =
               profileInfoModel.data.user.staffId;
           debugPrint(
               'Admin/Teacher Id ::: ${globalRxVariableController.staffId}');
-          profileInfoModel.data.user.roleId == 1
+          roleId == 1
               ? globalRxVariableController.roleName.value = 'Admin'
               : globalRxVariableController.roleName.value = 'Teacher';
         }
 
-        if (profileInfoModel.data.user.roleId == 3) {
+        if (roleId == 3) {
           globalRxVariableController.parentId.value =
               profileInfoModel.data.user.parentId;
           debugPrint('Parent Id ::: ${globalRxVariableController.parentId}');
           globalRxVariableController.roleName.value = 'Parent';
         }
 
+        // Abonnement aux topics Firebase selon le rôle
+        await _subscribeToRoleTopics(roleId);
+
         if (status) {
-          AppFunctions().getFunctions(profileInfoModel.data.user.roleId);
+          AppFunctions().getFunctions(roleId);
         }
         Get.find<AppSettingsController>().getGeneralSettings();
       } else {
