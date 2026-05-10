@@ -1,62 +1,45 @@
+import 'package:flutter_paystack_max/flutter_paystack_max.dart';
+
 class AppConfig {
-  /// To test the app
-  // static String domainName = 'https://freeschoolsoftware.in/spn106/V8.2.4';
+
   static String domainName = 'https://aramisc.com';
-  // static String domainName = 'https://spondan.com/spn4/infixedu/v8.2.8';
+
   static String appName = "Aramisc";
-  static String appLogo = 'assets/config/app_logo.png';
 
-  static String splashScreenBackground = 'assets/config/splash_bg.png';
-  static String splashTopLine = 'assets/config/splash_top_line.png';
-  static String loginBackground = 'assets/config/login_bg.png';
-  static String appToolbarBackground = 'assets/config/app_toolbar_bg.png';
   static bool isDemo = false;
+
+  static String getExtension(String url) {
+    var parts = url.split("/");
+    return parts[parts.length - 1];
+  }
+
+  /// ....................................................
+  /// Stripe Payment Gateway
+  static const String stripeServerURL = 'https://api.stripe.com/v1/payment_intents';
+  static String stripeCurrency = "USD".toUpperCase();
+  static const String stripeMerchantID = "merchant.thegreatestmarkeplace";
+  static const String stripePublishableKey =
+      "pk_test_51OTydVHHgGZ1rB2oCwA3d4UjhW1ajimcjqR65FczIBSZqyYtaGl58N5zHwXxuC6w39UjAQmSBLXmoUoe9CZuxnoP00VWEgjtvZ";
+  static const String stripeToken =
+      'sk_test_51OTydVHHgGZ1rB2oIpSFP0VPpk92x5vXBC30rGfbjITnq3IfjSYZRqOQ78sqTqEX7opbWgqxGxQkPOWbIjUbmBtL00kbanmzce';
+  // static const String appPackageName = "com.infix.lms";
+
+  ///
+  ///PAYPAL
+  ///
+  static const String paypalDomain = "https://api.sandbox.paypal.com"; // "https://api.paypal.com"; // for production mode
+  static const String paypalCurrency = 'USD';
+  static const String paypalClientId =
+      'AQgAWV4PlM9g81xZ51TLtVi68KjB89s4mpcchFschs7OvTM-3p4zsQTDqHOkv5Sw44k9goHlE-VAC7zj';
+  static const String paypalClientSecret =
+      'ELLoQfnZ4kRbDkul81U_RNRsgHgFPDumlUloCcX6nO6ziXRXKob8gVYaTn6CGCeNVJtBqsfv7VtbsuR2';
+  static const bool sandboxMood = true;
+
+  ///
+  /// Paystack
+  ///
+  static const String payStackPublicKey = "pk_test_d85ff3d14475233d9da27df301185459f5d148b0";
+  static const String payStackSecretKey = "sk_test_ee55a9b27d06843d868851a81362018d1aa9ff90";
+  static const PaystackCurrency payStackCurrency = PaystackCurrency.usd;
+  // static const String payStackCurrency = 'ZAR';
 }
-
-///
-///PAYPAL
-///
-const String paypalDomain =
-    "https://api.sandbox.paypal.com"; // "https://api.paypal.com"; // for production mode
-const String paypalCurrency = 'USD';
-const String paypalClientId =
-    'AQgAWV4PlM9g81xZ51TLtVi68KjB89s4mpcchFschs7OvTM-3p4zsQTDqHOkv5Sw44k9goHlE-VAC7zj';
-const String paypalClientSecret =
-    'ELLoQfnZ4kRbDkul81U_RNRsgHgFPDumlUloCcX6nO6ziXRXKob8gVYaTn6CGCeNVJtBqsfv7VtbsuR2';
-
-///
-/// Paystack
-///
-const String payStackPublicKey =
-    "pk_test_cb290d59b9ec539d7bc3617d1fee3d8a9cdb78b3";
-
-///
-/// Stripe
-///
-// const String stripeServerURL =
-//     'https://us-central1-amazcart-341610.cloudfunctions.net/expressApp';
-// const String stripeCurrency = "usd";
-// const String stripeMerchantID = "merchant.thegreatestmarkeplace";
-// const String stripePublishableKey =
-//     "pk_test_51JAWNlKS0igSTFP16dhgcM1fBayh6DStrpu5OA7jjAzYiFX3Bht0X8ARULBpIAVkgmws7PWEliNi4Q35Iyk8ThQL00aoNnF3OE";
-
-const String stripeServerURL = 'https://api.stripe.com/v1/payment_intents';
-String stripeCurrency = "USD".toUpperCase();
-const String stripeMerchantID = "merchant.thegreatestmarkeplace";
-const String stripePublishableKey =
-    "pk_test_51OdncqBjijh5dBwQfmuelP0FqxRkCLrxufRbQFFEqk2XwJLCA9kQHrQ57wBFf7nB2hcLSNwGDAMXp7WRxNDycUdF008PBBRl3o";
-const String stripeToken =
-    'sk_test_51OdncqBjijh5dBwQIuBYvl7rejQHHcB9Er4CaPPHDEGtNRiHzbRH6PBWFOEM6D9HHeLU7ISEdpsBcs2uOEvErGUX00KuiqE80N';
-
-///
-/// XENDIT
-///
-const String xenditPublicKey =
-    "xnd_public_development_UIBiS69fidQVPPVhTwqQ199Zt0RfmWHwenXCnv9Oefzu9MYJWnE8CQTw7TqRpzG";
-const String xenditSecretKey =
-    "xnd_development_Qdl0DRhGng5Aad7k5ZZ69Ba74zWZa9soTpNxpd08PIexvZ1u4AbnKtCiNYpN2J7";
-
-const String khaltiPublicKey =
-    "test_public_key_ed62083738dc438cb4e76df410290040";
-
-const String razorPayApiKey = "rzp_test_7fODedNb1rxd38";
