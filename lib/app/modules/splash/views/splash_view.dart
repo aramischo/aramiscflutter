@@ -28,44 +28,48 @@ class SplashView extends GetView<SplashController> {
           Align(
             alignment: Alignment.topCenter,
             child: SizedBox(
-              height: Get.height / 2,
+              // height: Get.height / 2,
+              height: Get.height,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.only(bottom: 10.0.h),
-                    child: Text(
-                      AppText.welcomeTo.tr,
-                      style: Get.textTheme.titleMedium?.copyWith(
-                        fontSize: 20.sp,
-                        color: Colors.grey,
-                      ),
-                    ),
-                  ),
+                  // Padding(
+                  //   padding: EdgeInsets.only(bottom: 10.0.h),
+                  //   child: Text(
+                  //     AppText.welcomeTo.tr,
+                  //     style: Get.textTheme.titleMedium?.copyWith(
+                  //       fontSize: 20.sp,
+                  //       color: Colors.white,
+                  //     ),
+                  //   ),
+                  // ),
                   AnimatedBuilder(
                     animation: controller.animation!,
                     builder: (context, child) {
                       return Container(
-                        height: controller.animation?.value,
-                        width: controller.animation?.value,
+                        // height: controller.animation?.value,
+                        // width: controller.animation?.value,
+                        height: Get.height/2,
+                        width: Get.width/2,
                         decoration: const BoxDecoration(
                           image: DecorationImage(
-                            image: ExactAssetImage(ImagePath.appLogo),
+                            // image: ExactAssetImage(ImagePath.splashLogo),
+                            image: ExactAssetImage(ImagePath.app_icon_logo),
                           ),
                         ),
                       );
                     },
                   ),
-                  Padding(
-                    padding: EdgeInsets.only(bottom: 60.0.h),
-                    child: Text(
-                      AppConfig.appName,
-                      style: Get.textTheme.titleMedium?.copyWith(
-                        fontSize: 18.sp,
-                        color: Colors.grey,
-                      ),
-                    ),
-                  ),
+                  // Padding(
+                  //   padding: EdgeInsets.only(bottom: 60.0.h),
+                  //   child: Text(
+                  //     AppConfig.appName,
+                  //     style: Get.textTheme.titleMedium?.copyWith(
+                  //       fontSize: 18.sp,
+                  //       color: Colors.grey,
+                  //     ),
+                  //   ),
+                  // ),
                 ],
               ),
             ),

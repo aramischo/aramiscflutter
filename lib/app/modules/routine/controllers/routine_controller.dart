@@ -28,7 +28,6 @@ class RoutineController extends GetxController {
         return;
       }
       loadingController.isLoading = true;
-
       final response = await BaseClient().getData(
         url: globalRxVariableController.roleId.value == 4
             ? AramiscApi.getTeacherMyRoutineList(
@@ -39,6 +38,7 @@ class RoutineController extends GetxController {
               ),
         header: GlobalVariable.header,
       );
+      log('studentRecordId : $globalRxVariableController.studentRecordId.value');
 
       log("Response :::: $response");
 

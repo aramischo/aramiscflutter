@@ -33,6 +33,7 @@ class LoginController extends GetxController {
 
     switch (roleId) {
       case 1:
+
         await subscribeToTopic('admins');
         break;
       case 2:

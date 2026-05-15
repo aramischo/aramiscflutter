@@ -164,8 +164,8 @@ import '../modules/staff_individual_details/bindings/staff_individual_details_bi
 import '../modules/staff_individual_details/views/staff_individual_details_view.dart';
 import '../modules/staff_list/bindings/staff_list_binding.dart';
 import '../modules/staff_list/views/staff_list_view.dart';
-import '../modules/student_class/bindings/student_class_binding.dart';
-import '../modules/student_class/views/student_class_view.dart';
+// import '../modules/student_class/bindings/student_class_binding.dart';
+// import '../modules/student_class/views/student_class_view.dart';
 import '../modules/student_homework/bindings/student_homework_binding.dart';
 import '../modules/student_homework/views/student_homework_view.dart';
 import '../modules/student_lesson_plan/bindings/student_lesson_plan_binding.dart';
@@ -507,12 +507,12 @@ class AppPages {
       binding: SingleChatBinding(),
       transition: Transition.fade,
     ),
-    GetPage(
-      name: _Paths.STUDENT_CLASS,
-      page: () => const StudentClassView(),
-      binding: StudentClassBinding(),
-      transition: Transition.fadeIn,
-    ),
+    // GetPage(
+    //   name: _Paths.STUDENT_CLASS,
+    //   page: () => const StudentClassView(),
+    //   binding: StudentClassBinding(),
+    //   transition: Transition.fadeIn,
+    // ),
     GetPage(
       name: _Paths.ADMIN_LEAVE,
       page: () => const AdminLeaveView(),

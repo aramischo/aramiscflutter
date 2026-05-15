@@ -56,8 +56,8 @@ List<HomeTileModelClass> studentList = [
       icon: ImagePath.studentTransport, title: 'Transport', value: 'Transport'),
   HomeTileModelClass(
       icon: ImagePath.studentDormitory, title: 'Dormitory', value: 'Dormitory'),
-  HomeTileModelClass(
-      icon: ImagePath.studentClass, title: 'Class', value: 'Class'),
+  // HomeTileModelClass(
+  //     icon: ImagePath.studentClass, title: 'Class', value: 'Class'),
   HomeTileModelClass(
       icon: ImagePath.studentSettings, title: 'Settings', value: 'Settings'),
 ];

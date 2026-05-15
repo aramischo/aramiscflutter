@@ -93,6 +93,7 @@ class Initializer {
     connect.httpClient.addRequestModifier<dynamic>(
       (request) {
         final token = AuthDatabase.instance.getToken();
+        debugPrint('TOKEN ====> $token');
         if (token != null) {
           request.headers['Authorization'] = 'Bearer $token';
         }

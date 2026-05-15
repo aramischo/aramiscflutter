@@ -22,8 +22,8 @@ class PrimaryAppBar extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  height: 20.h,
-                  width: 60.w,
+                  height: 25.h,
+                  width: 100.w,
                   alignment: Alignment.centerLeft,
                   decoration: const BoxDecoration(
                     image: DecorationImage(

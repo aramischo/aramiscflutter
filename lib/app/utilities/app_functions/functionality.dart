@@ -100,9 +100,9 @@ class AppFunctions {
       case 'Lesson':
         Get.toNamed(Routes.STUDENT_LESSON_PLAN);
         break;
-      case 'Class':
-        Get.toNamed(Routes.STUDENT_CLASS);
-        break;
+      // case 'Class':
+      //   Get.toNamed(Routes.STUDENT_CLASS);
+      //   break;
       case 'Assignment':
         Get.toNamed(Routes.ASSIGNMENT);
         break;
@@ -239,9 +239,9 @@ class AppFunctions {
       case 'Settings':
         Get.toNamed(Routes.SETTINGS);
         break;
-      case 'Class':
-        Get.toNamed(Routes.STUDENT_CLASS);
-        break;
+      // case 'Class':
+      //   Get.toNamed(Routes.STUDENT_CLASS);
+      //   break;
       case 'Bank Payment':
         Get.toNamed(Routes.BANK_PAYMENT_LIST);
         break;
@@ -323,9 +323,9 @@ class AppFunctions {
       case 'About':
         Get.toNamed(Routes.ABOUT);
         break;
-      case 'Class':
-        Get.toNamed(Routes.STUDENT_CLASS);
-        break;
+      // case 'Class':
+      //   Get.toNamed(Routes.STUDENT_CLASS);
+      //   break;
     }
   }
 
