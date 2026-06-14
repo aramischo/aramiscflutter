@@ -24,7 +24,7 @@ class LeaveView extends GetView<LeaveController> {
               physics: const NeverScrollableScrollPhysics(),
               itemCount: controller.leaveTileList.length,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3, crossAxisSpacing: 10.w),
+                  crossAxisCount: 2, crossAxisSpacing: 10.w),
               itemBuilder: (context, index) {
                 return Obx(
                   () => CustomCardTile(

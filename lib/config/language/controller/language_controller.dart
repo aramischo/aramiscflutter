@@ -1,6 +1,7 @@
 import 'package:aramisc/config/language/controller/languages/translated_language.dart';
 import 'package:flutter/material.dart';
 import 'package:aramisc/config/language/controller/languages/en_US.dart';
+import 'package:aramisc/config/language/controller/languages/fr_FR.dart';
 import 'package:get/get.dart';
 
 import 'language_selection.dart';
@@ -9,12 +10,12 @@ String? language;
 bool langValue = false;
 
 class LanguageController extends GetxController implements Translations {
-  String appLocale = 'en';
-  String langCode = 'en';
+  String appLocale = 'fr';
+  String langCode = 'fr';
 
   RxString langName = "".obs;
   Map<String, Map<String, String>> translationsData = {
-    "en": en,
+    "fr": fr,
     "active": translatedLanguage,
   };
 

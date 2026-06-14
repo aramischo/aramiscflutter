@@ -24,7 +24,7 @@ class ExaminationView extends GetView<ExaminationController> {
               physics: const NeverScrollableScrollPhysics(),
               itemCount: controller.examinationTileList.length,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3,
+                crossAxisCount: 2,
                 crossAxisSpacing: 10.w
               ),
               itemBuilder: (context, index) {

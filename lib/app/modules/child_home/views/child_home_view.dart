@@ -155,7 +155,7 @@ class ChildHomeView extends GetView<ChildHomeController> {
                   physics: const NeverScrollableScrollPhysics(),
                   itemCount: controller.homeTileList.length,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3,
+                      crossAxisCount: 2,
                       crossAxisSpacing: 10.w,
                       mainAxisSpacing: 10.w),
                   itemBuilder: (context, index) {
@@ -165,7 +165,6 @@ class ChildHomeView extends GetView<ChildHomeController> {
                         title: controller.homeTileList[index].title.tr,
                         onTap: () {
                           controller.selectIndex.value = index;
-
                           AppFunctions.routingDecisionForRoleId(
                               roleId: 2,
                               title: controller.homeTileList[index].value);

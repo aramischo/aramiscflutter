@@ -32,9 +32,9 @@ class CustomCardTile extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 10.w),
-        height: 60.w,
-        width: 60.w,
+        padding: EdgeInsets.symmetric(horizontal: 5.w),
+        height: height ?? 60.h,   // utilise le paramètre, sinon valeur par défaut
+        width: width ?? 60.w,
         decoration: ShapeDecoration(
           color: isSelected ? AppColors.primaryColor : AppColors.cardColor,
           shape: RoundedRectangleBorder(
@@ -52,8 +52,8 @@ class CustomCardTile extends StatelessWidget {
             children: [
               SizedBox(
                 child: Container(
-                  width: 50.w,
-                  height: 50.w,
+                  width: 80.w,
+                  height: 80.w,
                   decoration: ShapeDecoration(
                     color: isSelected ? Colors.white : AppColors.smallCardColor,
                     shape: RoundedRectangleBorder(
@@ -78,6 +78,7 @@ class CustomCardTile extends StatelessWidget {
               7.w.verticalSpacing,
               Text(
                 title.toUpperCase(),
+                maxLines: 2,
                 textAlign: TextAlign.center,
                 overflow: TextOverflow.ellipsis,
                 style: isSelected

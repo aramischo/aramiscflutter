@@ -47,14 +47,14 @@ class AppTextStyle {
 
   static TextStyle cardTextStyle14PurpleW500 = TextStyle(
     color: AppColors.primaryColor,
-    fontSize: setTextSize(size: 11),
+    fontSize: setTextSize(size: 9),
     fontFamily: 'Poppins',
     fontWeight: FontWeight.w400,
   );
 
   static TextStyle cardTextStyle14WhiteW500 = TextStyle(
     color: Colors.white,
-    fontSize: setTextSize(size: 11),
+    fontSize: setTextSize(size: 9),
     fontFamily: 'Poppins',
     fontWeight: FontWeight.w400,
   );

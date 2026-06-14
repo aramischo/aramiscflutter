@@ -27,7 +27,7 @@ class TeHomeworkView extends GetView<TeHomeworkController> {
               physics: const NeverScrollableScrollPhysics(),
               itemCount: controller.teacherHomeworkTileList.length,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3, crossAxisSpacing: 10.w),
+                  crossAxisCount: 2, crossAxisSpacing: 10.w),
               itemBuilder: (context, index) {
                 return Obx(
                   () => CustomCardTile(

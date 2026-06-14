@@ -26,7 +26,7 @@ class AdminContentView extends GetView<AdminContentController> {
               physics: const NeverScrollableScrollPhysics(),
               itemCount: controller.contentTileList.length,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3,
+                crossAxisCount: 2,
                 crossAxisSpacing: 10.w,
                 //mainAxisExtent: 10.w
               ),

@@ -258,7 +258,7 @@ class GroupChatView extends GetView<GroupChatController> {
                                 itemCount: controller.groupChatImageList.length,
                                 gridDelegate:
                                     const SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 3,
+                                  crossAxisCount: 2,
                                 ),
                                 itemBuilder: (context, index) {
                                   return Padding(

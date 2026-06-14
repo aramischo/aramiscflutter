@@ -9,6 +9,7 @@ import 'package:aramisc/app/data/constants/app_colors.dart';
 import 'package:aramisc/config/global_variable/global_variable_controller.dart';
 import 'package:aramisc/firebase_options.dart';
 import 'package:aramisc/push_notification/app_push_notification.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'app/routes/app_pages.dart';
 import 'config/language/controller/language_controller.dart';
@@ -83,6 +84,15 @@ void main() async {
       splitScreenMode: true,
       child: Obx(
             () => GetMaterialApp(
+              localizationsDelegates: const [
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: const [
+                Locale('fr', 'FR'),
+              ],
+              locale: const Locale('fr', 'FR'),
           debugShowCheckedModeBanner: false,
           theme: ThemeData().copyWith(
             dropdownMenuTheme: const DropdownMenuThemeData().copyWith(
@@ -96,7 +106,7 @@ void main() async {
           textDirection: Get.find<GlobalRxVariableController>().isRtl.value
               ? TextDirection.rtl
               : TextDirection.ltr,
-          locale: language == null ? Get.deviceLocale : Locale(language!),
+          //locale: language == null ? Get.deviceLocale : Locale(language!),
           translations: LanguageController(),
           fallbackLocale:
           language != null ? Locale(language!) : const Locale('en'),

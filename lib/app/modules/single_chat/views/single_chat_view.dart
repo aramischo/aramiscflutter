@@ -195,7 +195,7 @@ class SingleChatView extends GetView<SingleChatController> {
                                       controller.singleChatImageList.length,
                                   gridDelegate:
                                       const SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 3,
+                                    crossAxisCount: 2,
                                   ),
                                   itemBuilder: (context, index) {
                                     return Padding(

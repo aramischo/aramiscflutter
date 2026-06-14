@@ -65,8 +65,8 @@ List<HomeTileModelClass> studentList = [
 List<HomeTileModelClass> parentList = [
   HomeTileModelClass(
       icon: ImagePath.parentsChild, title: 'Child', value: 'Child'),
-  HomeTileModelClass(
-      icon: ImagePath.parentsAbout, title: 'About', value: 'About'),
+  // HomeTileModelClass(
+      // icon: ImagePath.parentsAbout, title: 'About', value: 'About'),
   HomeTileModelClass(
       icon: ImagePath.parentsSettings, title: 'Settings', value: 'Settings'),
 ];
@@ -82,10 +82,10 @@ List<HomeTileModelClass> teacherList = [
       icon: ImagePath.teacherNotice, title: 'Notice', value: 'Notice'),
   HomeTileModelClass(
       icon: ImagePath.teacherLibrary, title: 'Library', value: 'Library'),
-  HomeTileModelClass(
-      icon: ImagePath.teacherAbout, title: 'About', value: 'About'),
-  HomeTileModelClass(
-      icon: ImagePath.teacherClass, title: 'Class', value: 'Class'),
+  // HomeTileModelClass(
+      // icon: ImagePath.teacherAbout, title: 'About', value: 'About'),
+  //HomeTileModelClass(
+    //  icon: ImagePath.teacherClass, title: 'Class', value: 'Class'),
   HomeTileModelClass(
       icon: ImagePath.teacherSettings, title: 'Settings', value: 'Settings'),
 ];
@@ -119,8 +119,8 @@ List<HomeTileModelClass> adminList = [
       icon: ImagePath.adminLibrary, title: 'Library', value: 'Library'),
   HomeTileModelClass(
       icon: ImagePath.adminTransport, title: 'Transport', value: 'Transport'),
-  HomeTileModelClass(
-      icon: ImagePath.adminClass, title: 'Class', value: 'Class'),
+  //HomeTileModelClass(
+    //  icon: ImagePath.adminClass, title: 'Class', value: 'Class'),
   HomeTileModelClass(
       icon: ImagePath.adminSettings, title: 'Settings', value: 'Settings'),
 ];

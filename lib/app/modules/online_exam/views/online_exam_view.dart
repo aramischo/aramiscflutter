@@ -24,7 +24,7 @@ class OnlineExamView extends GetView<OnlineExamController> {
               physics: const NeverScrollableScrollPhysics(),
               itemCount: controller.onlineExamTileList.length,
               gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3,
+                crossAxisCount: 2,
                 crossAxisSpacing: 10.w
               ),
               itemBuilder: (context, index) {

@@ -27,7 +27,7 @@ class AdminFeesView extends GetView<AdminFeesController> {
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: controller.adminFeesTileList.length,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
+                    crossAxisCount: 2,
                     crossAxisSpacing: 10.w,
                     mainAxisSpacing: 10.w),
                 itemBuilder: (context, index) {

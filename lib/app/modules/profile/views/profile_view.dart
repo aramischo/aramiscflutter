@@ -652,7 +652,7 @@ class ProfileView extends GetView<ProfileController> {
                                               ),
                                             )
                                           : const NoDataAvailableWidget(),
-                                  210.h.verticalSpacing,
+                                  190.h.verticalSpacing,
                                 ],
                               ),
                             ],

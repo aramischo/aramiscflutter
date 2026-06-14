@@ -136,7 +136,9 @@ class ApplyLeaveView extends GetView<ApplyLeaveController> {
                     }
                   },
                   text: 'Apply'.tr,
-                ),
+
+                ).marginOnly(bottom:30),
+
         )
 
         /// Button

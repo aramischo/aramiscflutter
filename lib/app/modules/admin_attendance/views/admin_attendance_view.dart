@@ -33,7 +33,7 @@ class AdminAttendanceView extends GetView<AdminAttendanceController> {
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: controller.adminAttendanceTileList.length,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
+                    crossAxisCount: 2,
                     mainAxisSpacing: 10.w,
                     crossAxisSpacing: 10.w),
                 itemBuilder: (context, index) {

@@ -26,7 +26,7 @@ class AdminDormitoryView extends GetView<AdminDormitoryController> {
               physics: const NeverScrollableScrollPhysics(),
               itemCount: controller.dormitoryTileList.length,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
+                  crossAxisCount: 2,
                   crossAxisSpacing: 10.w,
                   mainAxisSpacing: 10.w),
               itemBuilder: (context, index) {
