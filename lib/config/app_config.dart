@@ -2,7 +2,7 @@ import 'package:flutter_paystack_max/flutter_paystack_max.dart';
 
 class AppConfig {
 
-  static String domainName = 'https://aramisc.com';
+  static String domainName = 'https://demo.aramisc.com';
 
   static String appName = "Aramisc";
 
