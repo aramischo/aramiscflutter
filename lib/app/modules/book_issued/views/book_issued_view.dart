@@ -30,7 +30,7 @@ class BookIssuedView extends GetView<BookIssuedController> {
                 padding: EdgeInsets.symmetric(
                   horizontal: 11.w,
                 ),
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
                     topRight: Radius.circular(8),
                     topLeft: Radius.circular(8),

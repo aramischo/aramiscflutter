@@ -23,15 +23,17 @@ class LoginView extends GetView<LoginController> {
   Widget build(BuildContext context) {
     return Obx(() => controller.internetController.internet.isTrue
         ? Scaffold(
-            backgroundColor: AppColors.secondaryColor,
+            // Zones des barres système : même couleur que le fond
+            backgroundColor: AppColors.appBackgroundColor,
             body: SafeArea(
               child: SingleChildScrollView(
                 child: Container(
                   height: Get.height,
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
+                      // Dégradé de fond réglable (Réglages généraux > Couleurs de l'application mobile)
                       colors: [
-                        AppColors.primaryColor,
+                        AppColors.backgroundSecondaryColor,
                         AppColors.appBackgroundColor
                       ],
                       begin: Alignment.bottomLeft,

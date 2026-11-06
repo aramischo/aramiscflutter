@@ -151,7 +151,7 @@ class TeHomeworkListView extends GetView<TeHomeworkListController> {
                 padding: const EdgeInsets.symmetric(
                   horizontal: 10,
                 ),
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
                     topRight: Radius.circular(8),
                     topLeft: Radius.circular(8),

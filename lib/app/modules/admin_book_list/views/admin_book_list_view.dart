@@ -27,7 +27,7 @@ class AdminBookListView extends GetView<AdminBookListController> {
               padding: const EdgeInsets.symmetric(
                 horizontal: 11,
               ),
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
                   topRight: Radius.circular(8),
                   topLeft: Radius.circular(8),

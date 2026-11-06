@@ -11,3 +11,6 @@
 -dontwarn javax.annotation.Nullable
 -dontwarn javax.annotation.concurrent.GuardedBy
 -dontwarn org.slf4j.impl.StaticLoggerBinder
+# path_provider_android (jni) appelle io.flutter.util.PathUtils par reflexion :
+# sans cette regle, R8 la supprime et l'application reste bloquee au demarrage en release.
+-keep class io.flutter.util.PathUtils { *; }

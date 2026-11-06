@@ -55,7 +55,7 @@ class SubjectTile extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 5.0),
                     child: Text(
-                      lectureType ?? "",
+                      (lectureType ?? "").tr,
                       style: AppTextStyle.fontSize13BlackW400,
                     ),
                   ),

@@ -6,16 +6,47 @@ class AppColors {
   /// reçues avec language-list / general-settings et mémorisées pour le démarrage suivant.
   static const _storageKey = 'mobile_colors';
 
-  static Color primaryColor               = const Color(0xFF862CFF);
-  static Color secondaryColor             = const Color(0xFFB844D1);
-  static Color appBackgroundColor         = const Color(0xFF6100B8);
-  static Color appButtonColor             = const Color(0xFF953BE4);
-  static Color lessonButtonColor          = const Color(0xFF862CFF);
-  static Color backgroundPrimaryColor     = const Color(0xFF6100B8);
-  static Color backgroundSecondaryColor   = const Color(0xFF943AE3);
-  static Color homeTextColor              = const Color(0xFF943AE3);
-  static Color parentsIconCardBackgroundColor = const Color(0xFF953BE4);
-  static Color profileIndicatorColor      = const Color(0xFFB844D1);
+  static Color primaryColor               = const Color(0xFF1565C0);
+  static Color secondaryColor             = const Color(0xFF1E88E5);
+  static Color appBackgroundColor         = const Color(0xFF0D47A1);
+  static Color appButtonColor             = const Color(0xFF1976D2);
+  static Color lessonButtonColor          = const Color(0xFF1565C0);
+  static Color backgroundPrimaryColor     = const Color(0xFF0D47A1);
+  static Color backgroundSecondaryColor   = const Color(0xFF1E88E5);
+  static Color homeTextColor              = const Color(0xFF1E88E5);
+  static Color parentsIconCardBackgroundColor = const Color(0xFF1976D2);
+  static Color profileIndicatorColor      = const Color(0xFF1E88E5);
+
+  /// Teintes dérivées de la couleur principale (liens, bordures, fonds clairs des tuiles)
+  static Color homeworkViewColor          = const Color(0xFF1565C0);
+  static Color unreadChat                 = const Color(0xFF1565C0);
+  static Color notificationColor          = const Color(0xFF1565C0);
+  static Color boxBorderColor             = const Color(0x4C1565C0);
+  static Color cardColor                  = const Color(0x4CEFF5FC);
+  static Color smallCardColor             = const Color(0xFFE8F0FA);
+  static Color homeIconBackgroundColor    = const Color(0xFFE8F0FA);
+  static Color profileTopContainerColor   = const Color(0xFFE8F0FA);
+  static Color pinkColor                  = const Color(0xFFDCE8F7);
+  static Color dividerColor               = const Color(0xFFDCE8F7);
+  static Color dividerColorSelected       = const Color(0xFFDCE8F7);
+  /// Carte sombre du profil : suit le début du dégradé de fond
+  static Color profileCardBackgroundColor = const Color(0xFF0D47A1);
+
+  static void _derive() {
+    final p = primaryColor;
+    homeworkViewColor = p;
+    unreadChat = p;
+    notificationColor = p;
+    boxBorderColor = p.withOpacity(0.3);
+    cardColor = Color.lerp(Colors.white, p, 0.06)!.withOpacity(0.3);
+    smallCardColor = Color.lerp(Colors.white, p, 0.10)!;
+    homeIconBackgroundColor = smallCardColor;
+    profileTopContainerColor = smallCardColor;
+    pinkColor = Color.lerp(Colors.white, p, 0.15)!;
+    dividerColor = pinkColor;
+    dividerColorSelected = pinkColor;
+    profileCardBackgroundColor = appBackgroundColor;
+  }
 
   /// Couleurs mémorisées lors du dernier lancement (à appeler avant runApp)
   static void loadSaved() {
@@ -65,6 +96,7 @@ class AppColors {
       appButtonColor = button;
       parentsIconCardBackgroundColor = button;
     }
+    _derive();
     final after = [primaryColor, secondaryColor, appBackgroundColor, backgroundSecondaryColor, appButtonColor];
     for (var i = 0; i < before.length; i++) {
       if (before[i] != after[i]) return true;
@@ -81,34 +113,25 @@ class AppColors {
   }
 
   static const loginIconColor             = Color(0xFFA6ABCE);
-  static const pinkColor                  = Color(0xFFEBDAF9);
   static const lightPinkColor             = Color(0xFFFDFBFF);
-  static const cardColor                  = Color(0x4CF4EBFC);
-  static const boxBorderColor             = Color(0x4C67329B);
-  static const dividerColor               = Color(0xFFEBD8FC);
   static const hintTextColor              = Color(0xFF635976);
-  static const smallCardColor             = Color(0xFFF4EBFC);
   static const appColorB5C1CB             = Color(0xFFB6B6B6);
   static const appColor324844             = Color(0xFF324844);
   static const textColor635976            = Color(0xFF635976);
   static const borderColorEAE7F0          = Color(0xFFEAE7F0);
 
  /// Text Colors
-  static const homeIconBackgroundColor = Color(0xFFF4EBFC);
 
 
   /// Home Colors
-  static const dividerColorSelected = Color(0xFFEBD8FC);
 
   /// Profile Colors
-  static const profileTopContainerColor = Color(0xFFF4EBFC);
   static const parentsCardBorderColor = Color(0xFFF2F0F6);
   static const parentsDesignationColor = Color(0xFFF2F0F6);
   static const profileTitleColor = Color(0xFF635976);
   static const profileValueColor = Color(0xFF412C56);
   static Color profileDividerColor = const Color(0xFF635976).withOpacity(0.2);
   static const profilePicBackgroundColor = Color(0xFF556080);
-  static const profileCardBackgroundColor = Color(0xFF412C56);
   static const profileCardTextColor = Color(0xFFF2F0F6);
   static const editProfileTextFieldLabelColor = Color(0xFF8489AB);
 
@@ -119,12 +142,10 @@ class AppColors {
 
 
   /// Notification Color
-  static const notificationColor = Color(0xFFED00FF);
 
   ///others
 
   static const homeworkSubjectColor = Color(0xFF373F6B);
-  static const homeworkViewColor = Color(0xFF67329B);
   static const homeworkStatusRedColor = Color(0xFFF95452);
   static const homeworkStatusGreenColor = Color(0xFF06A83C);
   static const homeworkWidgetColor = Color(0xFFF2F0F6);
@@ -140,7 +161,6 @@ class AppColors {
   static const bankPaymentStatusRedColor = Color(0xFFED3B3B);
   static const activeStatusRedColor = Color(0xFFE3342F);
   static const activeStatusYellowColor = Color(0xFFFFBE00);
-  static const unreadChat = Color(0xFF8124D3);
 
 
 

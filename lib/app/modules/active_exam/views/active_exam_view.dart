@@ -87,7 +87,9 @@ class ActiveExamView extends GetView<ActiveExamController> {
                                   } else if (controller
                                           .onlineActiveExamList[index].status ==
                                       'Take Exam') {
-                                    colorCode = '0xFF943AE3';
+                                    // Couleur principale (réglable)
+                                    colorCode =
+                                        '0x${AppColors.primaryColor.value.toRadixString(16).padLeft(8, '0')}';
                                   } else {
                                     colorCode = '0xFF412C56';
                                   }

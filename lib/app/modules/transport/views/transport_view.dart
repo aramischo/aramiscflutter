@@ -37,7 +37,7 @@ class TransportView extends GetView<TransportController> {
                   padding: EdgeInsets.symmetric(
                     horizontal: 10.w,
                   ),
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(
                       topRight: Radius.circular(8),
                       topLeft: Radius.circular(8),

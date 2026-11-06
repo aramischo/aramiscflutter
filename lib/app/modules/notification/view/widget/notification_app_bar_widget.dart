@@ -27,7 +27,7 @@ class NotificationAppBarWidget extends StatelessWidget {
                   child: Container(
                     height: 15,
                     width: 15,
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       color: AppColors.notificationColor,
                     ),

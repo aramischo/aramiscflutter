@@ -772,7 +772,7 @@ class SingleChatView extends GetView<SingleChatController> {
                                       ),
                                     ),
                                     10.w.horizontalSpacing,
-                                    const SizedBox(
+                                    SizedBox(
                                       height: 30,
                                       child: VerticalDivider(
                                         color: AppColors.dividerColor,

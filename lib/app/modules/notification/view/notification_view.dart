@@ -40,10 +40,13 @@ class NotificationView extends GetView<NotificationController> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      "${"You have".tr} ${globalRxVariableController.notificationCount} ${"New notification".tr}",
-                      style: AppTextStyle.notificationText,
+                    Flexible(
+                      child: Text(
+                        "${"You have".tr} ${globalRxVariableController.notificationCount} ${"New notification".tr}",
+                        style: AppTextStyle.notificationText,
+                      ),
                     ),
+                    const SizedBox(width: 8),
                     controller.unReadNotificationList.isNotEmpty
                         ? controller.loadingController.isLoading
                             ? const CircularProgressIndicator()
@@ -52,7 +55,7 @@ class NotificationView extends GetView<NotificationController> {
                                   controller.readAllNotifications();
                                 },
                                 title: AppText.notificationMarkAsRaed.tr,
-                                width: 110.w,
+                                width: 140.w,
                               )
                         : const SizedBox(),
                   ],

@@ -38,7 +38,7 @@ class CustomCardTile extends StatelessWidget {
         decoration: ShapeDecoration(
           color: isSelected ? AppColors.primaryColor : AppColors.cardColor,
           shape: RoundedRectangleBorder(
-            side: const BorderSide(
+            side: BorderSide(
               width: 1,
               strokeAlign: BorderSide.strokeAlignCenter,
               color: AppColors.boxBorderColor,
@@ -65,7 +65,8 @@ class CustomCardTile extends StatelessWidget {
                       icon,
                       height: 30.w,
                       // width: 35,
-                      color: iconColor,
+                      // Icônes teintées avec la couleur principale (réglable), blanches sur la tuile sélectionnée
+                      color: iconColor ?? (isSelected ? Colors.white : AppColors.primaryColor),
                     ),
                   ),
                 ),

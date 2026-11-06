@@ -37,13 +37,17 @@ class SecondaryButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(radius ?? 6),
             color: color ?? AppColors.appButtonColor,
             border: Border.all(color: borderColor ?? Colors.transparent)),
+        // Texte réduit plutôt que tronqué quand il dépasse la largeur du bouton
+        padding: const EdgeInsets.symmetric(horizontal: 6),
         child: Center(
-          child: Text(
-            title ?? "Button".tr,
-            maxLines: 1,
-            textAlign: TextAlign.center,
-            overflow: TextOverflow.ellipsis,
-            style: textStyle ?? AppTextStyle.textStyle12WhiteW500,
+          child: FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(
+              title ?? "Button".tr,
+              maxLines: 1,
+              textAlign: TextAlign.center,
+              style: textStyle ?? AppTextStyle.textStyle12WhiteW500,
+            ),
           ),
         ),
       ),

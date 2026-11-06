@@ -58,7 +58,7 @@ Future<void> setupFlutterNotifications() async {
 
   // Initialisation Android
   const AndroidInitializationSettings androidSettings =
-  AndroidInitializationSettings('@mipmap/ic_launcher');
+  AndroidInitializationSettings('@mipmap/launcher_icon');
 
   // Initialisation iOS
   const DarwinInitializationSettings iosSettings = DarwinInitializationSettings(
@@ -111,7 +111,7 @@ void showFlutterNotification(RemoteMessage message) {
         channelDescription: channel.description,
         importance: Importance.high,
         priority: Priority.high,
-        icon: '@mipmap/ic_launcher',
+        icon: '@mipmap/launcher_icon',
       ),
       // FIX: ajout du support iOS — manquait dans l'ancienne version
       iOS: const DarwinNotificationDetails(
