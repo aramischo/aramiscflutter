@@ -551,7 +551,7 @@ class ProfileView extends GetView<ProfileController> {
 
                                   /// Documents Tiles
                                   controller.documentLoader.value
-                                      ? const CircularProgressIndicator(
+                                      ? CircularProgressIndicator(
                                           color: AppColors.primaryColor,
                                         )
                                       : controller.documentsDataList.isNotEmpty

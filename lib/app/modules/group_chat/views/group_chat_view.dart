@@ -865,7 +865,7 @@ class GroupChatView extends GetView<GroupChatController> {
                                     height: 45,
                                     width: 45,
                                     padding: const EdgeInsets.all(5),
-                                    decoration: const BoxDecoration(
+                                    decoration: BoxDecoration(
                                       shape: BoxShape.circle,
                                       color: AppColors.primaryColor,
                                       boxShadow: [

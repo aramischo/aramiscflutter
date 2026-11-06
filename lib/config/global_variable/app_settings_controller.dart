@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
+import 'package:aramisc/app/data/constants/app_colors.dart';
 import 'package:aramisc/app/database/auth_database.dart';
 import 'package:aramisc/app/routes/app_pages.dart';
 import 'package:aramisc/app/utilities/api_urls.dart';
@@ -53,6 +54,10 @@ class AppSettingsController extends GetxController {
       if (response.statusCode == 200) {
         languageLoader.value = true;
         Map<String, dynamic> responseData = json.decode(response.body);
+        // Couleurs réglées dans le back-office
+        if (AppColors.applyFromServer(responseData['mobile_colors'])) {
+          Get.forceAppUpdate();
+        }
         Map<String, String> translations =
             Map<String, String>.from(responseData['lang']);
         for (int i = 0; i < responseData['lang_list'].length; i++) {
@@ -113,6 +118,10 @@ class AppSettingsController extends GetxController {
       if (response.statusCode == 200) {
         languageLoader.value = true;
         Map<String, dynamic> responseData = json.decode(response.body);
+        // Couleurs réglées dans le back-office
+        if (AppColors.applyFromServer(responseData['mobile_colors'])) {
+          Get.forceAppUpdate();
+        }
         Map<String, String> translations =
             Map<String, String>.from(responseData['lang']);
         for (int i = 0; i < responseData['lang_list'].length; i++) {
@@ -173,6 +182,8 @@ class AppSettingsController extends GetxController {
               json.decode(response.body.toString()));
 
       if (responseModel.success == true) {
+        AppColors.applyFromServer(
+            json.decode(response.body.toString())['data']?['mobile_colors']);
         systemSettings.value = responseModel;
 
         currencyDetail = responseModel.data!.systemSettings!.currencyDetail;

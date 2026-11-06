@@ -95,7 +95,7 @@ class VirtualClassTile extends StatelessWidget {
                               padding: EdgeInsets.symmetric(
                                   vertical: 5, horizontal: 5.w),
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(2),
+                                borderRadius: BorderRadius.circular(6),
                                 color: activeStatusColor,
                               ),
                               child: Text(

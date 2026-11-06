@@ -41,7 +41,7 @@ class AdminSubjectAttendanceSearchListView
                     ),
                     Obx(
                       () => controller.holidayLoader.value
-                          ? const CircularProgressIndicator(
+                          ? CircularProgressIndicator(
                               color: AppColors.primaryColor,
                             )
                           : InkWell(
@@ -74,10 +74,10 @@ class AdminSubjectAttendanceSearchListView
                     ? Expanded(
                         child: Center(
                           child: Platform.isAndroid
-                              ? const CircularProgressIndicator(
+                              ? CircularProgressIndicator(
                                   color: AppColors.primaryColor,
                                 )
-                              : const CupertinoActivityIndicator(
+                              : CupertinoActivityIndicator(
                                   color: AppColors.primaryColor,
                                   radius: 24,
                                 ),

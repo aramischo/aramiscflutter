@@ -23,11 +23,13 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return AramiscEduScaffold(
       leadingIcon: const SizedBox(),
+      // Place pour le logo et le titre de PrimaryAppBar
+      appBarHeight: 72,
       appBar: Obx(
         () => PrimaryAppBar(
           title:
               '${"Welcome".tr} ${controller.globalRxVariableController.fullName.value} | ${controller.globalRxVariableController.roleName.value?.tr}',
-          // title: controller.globalRxVariableController.roleId.value == 1
+          // title: controller.globalRxVariableController.isAdmin
           //     ? 'Welcome to Admin'.tr
           //     : 'Welcome to our school'.tr,
           actions: [
@@ -47,7 +49,7 @@ class HomeView extends GetView<HomeController> {
                     },
                     title: 'Confirmation'.tr,
                     subTitle:
-                        "${"Are you sure".tr}\n${"you want to logout".tr}?",
+                        'Would you like to logout?'.tr,
                     noText: 'Cancel'.tr,
                     yesText: 'Logout'.tr,
                   ),

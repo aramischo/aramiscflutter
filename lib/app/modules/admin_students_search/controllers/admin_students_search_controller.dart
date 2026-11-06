@@ -48,7 +48,7 @@ class AdminStudentsSearchController extends GetxController {
       loadingController.isLoading = true;
 
       final response = await BaseClient().getData(
-          url: globalRxVariableController.roleId.value == 1
+          url: globalRxVariableController.isAdmin
               ? AramiscApi.getAdminClassList
               : AramiscApi.getTeacherClassList,
           header: GlobalVariable.header);
@@ -91,7 +91,7 @@ class AdminStudentsSearchController extends GetxController {
       sectionLoader.value = true;
 
       final response = await BaseClient().getData(
-          url: globalRxVariableController.roleId.value == 1
+          url: globalRxVariableController.isAdmin
               ? AramiscApi.getAdminSectionList(classId: classId)
               : AramiscApi.getTeacherSectionList(classId: classId),
           header: GlobalVariable.header);
@@ -152,7 +152,7 @@ class AdminStudentsSearchController extends GetxController {
       subjectLoader.value = true;
 
       final response = await BaseClient().getData(
-        url: globalRxVariableController.roleId.value == 1
+        url: globalRxVariableController.isAdmin
             ? AramiscApi.getAdminStudentSubjectList(
                 classId: classId, sectionId: sectionId)
             : AramiscApi.getTeacherStudentSubjectList(

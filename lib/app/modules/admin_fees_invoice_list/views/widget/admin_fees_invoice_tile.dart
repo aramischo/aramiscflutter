@@ -102,13 +102,14 @@ class AdminFeesInvoiceTile extends StatelessWidget {
                         width: Get.width * 0.2,
                         padding: const EdgeInsets.all(5),
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(3),
+                            borderRadius: BorderRadius.circular(6),
                             color: statusColor),
                         child: Center(
-                          child: Text(
-                            status ?? "",
-                            style: AppTextStyle.textStyle12WhiteW400,
-                          ),
+                          child: FittedBox(
+                              fit: BoxFit.scaleDown,
+                              child: Text(status ?? "",
+                                  style: AppTextStyle.textStyle12WhiteW400,
+                                  maxLines: 1)),
                         ),
                       )
                     ],

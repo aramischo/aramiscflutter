@@ -33,7 +33,7 @@ class TeSearchClassRoutineView extends GetView<TeSearchClassRoutineController> {
                 5.h.verticalSpacing,
                 controller.adminStudentsSearchController.loadingController
                         .isLoading
-                    ? const Center(
+                    ? Center(
                         child: CircularProgressIndicator(
                           color: AppColors.primaryColor,
                         ),
@@ -61,7 +61,7 @@ class TeSearchClassRoutineView extends GetView<TeSearchClassRoutineController> {
                     style: AppTextStyle.fontSize12GreyW400),
                 5.h.verticalSpacing,
                 controller.adminStudentsSearchController.sectionLoader.value
-                    ? const Center(
+                    ? Center(
                         child: CircularProgressIndicator(
                           color: AppColors.primaryColor,
                         ),

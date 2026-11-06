@@ -121,17 +121,18 @@ class HomeworkCardTile extends StatelessWidget {
                               ? Container(
                                   // height: 18.w,
                                   width: 83.w,
-                                  padding: EdgeInsets.symmetric(horizontal: 3),
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 6, vertical: 2),
                                   decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(3),
+                                    borderRadius: BorderRadius.circular(6),
                                     color: statusColor,
                                   ),
-                                  child: Text(
-                                    status?.tr ?? "",
-                                    overflow: TextOverflow.ellipsis,
-                                    maxLines: 1,
-                                    style: AppTextStyle.textStyle10WhiteW300,
-                                  ),
+                                  child: FittedBox(
+                                      fit: BoxFit.scaleDown,
+                                      child: Text(status?.tr ?? "",
+                                          style:
+                                              AppTextStyle.textStyle10WhiteW300,
+                                          maxLines: 1)),
                                 )
                               : const SizedBox(),
                         ],

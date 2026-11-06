@@ -87,7 +87,7 @@ class AdminAddRoomView extends GetView<AdminAddRoomController> {
                       ),
                       40.h.verticalSpacing,
                       controller.saveLoader.value
-                          ? const CircularProgressIndicator(
+                          ? CircularProgressIndicator(
                               color: AppColors.primaryColor,
                             )
                           : PrimaryButton(

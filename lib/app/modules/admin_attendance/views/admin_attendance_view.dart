@@ -18,7 +18,7 @@ class AdminAttendanceView extends GetView<AdminAttendanceController> {
   Widget build(BuildContext context) {
     return Obx(
       () => AramiscEduScaffold(
-        leadingIcon: controller.globalRxVariableController.roleId.value == 1
+        leadingIcon: controller.globalRxVariableController.isAdmin
             ? const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 8.0),
                 child: BackButtonWidget())

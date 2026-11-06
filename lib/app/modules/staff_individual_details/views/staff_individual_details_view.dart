@@ -23,7 +23,7 @@ class StaffIndividualDetailsView
         title: "${controller.staffFirstName} ${controller.staffLastName}",
         body: CustomBackground(
           customWidget: controller.loadingController.isLoading
-              ? const Center(
+              ? Center(
                   child: CircularProgressIndicator(
                     color: AppColors.primaryColor,
                   ),

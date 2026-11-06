@@ -73,7 +73,7 @@ class AdminClassAttendanceSearchView
 
                   /// Section Dropdown
                   controller.adminStudentsSearchController.sectionLoader.value
-                      ? const Center(
+                      ? Center(
                           child: CircularProgressIndicator(
                             color: AppColors.primaryColor,
                           ),

@@ -25,7 +25,7 @@ class StaffListView extends GetView<StaffListController> {
             10.h.verticalSpacing,
             Obx(
               () => controller.isLoading.value
-                  ? const CircularProgressIndicator(
+                  ? CircularProgressIndicator(
                       color: AppColors.primaryColor,
                     )
                   : controller.roleWiseStaffList.isNotEmpty

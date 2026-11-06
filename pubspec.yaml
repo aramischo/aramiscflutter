@@ -75,6 +75,7 @@ dependencies:
   flutter_screenutil: ^5.9.3
   flutter_localizations:
     sdk: flutter
+  flutter_secure_storage: ^10.3.4
 dependency_overrides:
   http: ^0.13.5
 #  flutter_inappwebview: ^5.7.2+3

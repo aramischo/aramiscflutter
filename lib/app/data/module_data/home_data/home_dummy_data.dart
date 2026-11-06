@@ -90,7 +90,8 @@ List<HomeTileModelClass> teacherList = [
       icon: ImagePath.teacherSettings, title: 'Settings', value: 'Settings'),
 ];
 
-List<HomeTileModelClass> adminList = [
+// Getter : la tuile Frais dépend des réglages, chargés après le démarrage
+List<HomeTileModelClass> get adminList => [
   HomeTileModelClass(
       icon: ImagePath.adminStudents, title: 'Students', value: 'Students'),
   HomeTileModelClass(

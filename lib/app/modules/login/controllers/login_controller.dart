@@ -62,7 +62,7 @@ class LoginController extends GetxController {
       profileInfoModel = ProfileInfoModel.fromJson(res);
       if (profileInfoModel.success == true) {
         isLoading.value = false;
-        _box.write('password', password);
+        await AuthDatabase.instance.savePassword(password);
         globalRxVariableController.notificationCount.value =
             profileInfoModel.data.unreadNotifications;
         globalRxVariableController.token.value =
@@ -96,12 +96,11 @@ class LoginController extends GetxController {
           debugPrint('Student Id ::: ${globalRxVariableController.studentId}');
         }
 
-        if (roleId == 1 || roleId == 4) {
+        if (roleId != 2 && roleId != 3) {
           globalRxVariableController.staffId.value =
               profileInfoModel.data.user.staffId;
-          roleId == 1
-              ? globalRxVariableController.roleName.value = 'Admin'
-              : globalRxVariableController.roleName.value = 'Teacher';
+          globalRxVariableController.roleName.value =
+              GlobalRxVariableController.roleLabel(roleId);
           debugPrint(
               'Admin/Teacher Id ::: ${globalRxVariableController.staffId}');
         }
@@ -190,14 +189,13 @@ class LoginController extends GetxController {
           debugPrint('Student Id ::: ${globalRxVariableController.studentId}');
         }
 
-        if (roleId == 1 || roleId == 4) {
+        if (roleId != 2 && roleId != 3) {
           globalRxVariableController.staffId.value =
               profileInfoModel.data.user.staffId;
           debugPrint(
               'Admin/Teacher Id ::: ${globalRxVariableController.staffId}');
-          roleId == 1
-              ? globalRxVariableController.roleName.value = 'Admin'
-              : globalRxVariableController.roleName.value = 'Teacher';
+          globalRxVariableController.roleName.value =
+              GlobalRxVariableController.roleLabel(roleId);
         }
 
         if (roleId == 3) {

@@ -79,7 +79,7 @@ class SuggestedSearchTile extends StatelessWidget {
                     child: Container(
                       padding: EdgeInsets.all(5.w),
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(2),
+                        borderRadius: BorderRadius.circular(6),
                         color: AppColors.primaryColor,
                       ),
                       child: Text(

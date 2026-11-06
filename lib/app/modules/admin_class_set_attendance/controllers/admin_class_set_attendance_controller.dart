@@ -90,7 +90,7 @@ class AdminClassSetAttendanceController extends GetxController {
       saveLoader.value = true;
 
       final response = await BaseClient().postData(
-          url: globalRxVariableController.roleId.value == 1
+          url: globalRxVariableController.isAdmin
               ? AramiscApi.adminSubmitStudentAttendance
               : AramiscApi.teacherSubmitStudentAttendance,
           header: GlobalVariable.header,
@@ -113,7 +113,7 @@ class AdminClassSetAttendanceController extends GetxController {
             message:
                 postRequestResponseModel.message ?? 'Upload Successful'.tr);
         final response = await BaseClient().postData(
-          url: globalRxVariableController.roleId.value == 1
+          url: globalRxVariableController.isAdmin
               ? AramiscApi.getAdminStudentSearchAttendanceList(
                   classId: studentClassId!,
                   sectionId: studentSectionId!,
@@ -154,7 +154,7 @@ class AdminClassSetAttendanceController extends GetxController {
       holidayLoader.value = true;
 
       final response = await BaseClient().postData(
-          url: globalRxVariableController.roleId.value == 1
+          url: globalRxVariableController.isAdmin
               ? AramiscApi.adminAttendanceMarkUnMarkHolyDay
               : AramiscApi.teacherAttendanceMarkUnMarkHolyDay,
           header: GlobalVariable.header,

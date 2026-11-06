@@ -31,9 +31,8 @@ PersistentBottomNavBarItem navItem(
             size: 18.w,
           ),
     title: title,
-    textStyle: TextStyle(
-        fontFamily: "Poppins", fontWeight: FontWeight.w300, fontSize: 10.sp),
-    activeColorPrimary: Colors.deepPurple.withOpacity(0.9),
+    textStyle: navTitleStyle(title),
+    activeColorPrimary: AppColors.primaryColor,
     inactiveColorPrimary: Colors.grey.withOpacity(0.9),
   );
 }
@@ -56,9 +55,8 @@ PersistentBottomNavBarItem navItemWithImageIcon({
       color: Colors.white,
     ),
     title: title,
-    textStyle: TextStyle(
-        fontFamily: "Poppins", fontWeight: FontWeight.w300, fontSize: 10.sp),
-    activeColorPrimary: Colors.deepPurple.withOpacity(0.9),
+    textStyle: navTitleStyle(title),
+    activeColorPrimary: AppColors.primaryColor,
     inactiveColorPrimary: Colors.grey.withOpacity(0.9),
   );
 }
@@ -82,7 +80,7 @@ class NotificationBell extends StatelessWidget {
           child: Container(
             height: 18.w,
             width: 18.w,
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: AppColors.primaryColor,
             ),
@@ -135,7 +133,7 @@ class NotificationBell extends StatelessWidget {
 //     size: 18,
 //   ),
 //   title: "Home".tr,
-//   activeColorPrimary: Colors.deepPurple.withOpacity(0.9),
+//   activeColorPrimary: AppColors.primaryColor,
 //   inactiveColorPrimary: Colors.grey.withOpacity(0.9),
 // ),
 // PersistentBottomNavBarItem(
@@ -148,7 +146,7 @@ class NotificationBell extends StatelessWidget {
 //     size: 18,
 //   ),
 //   title: "Notification".tr,
-//   activeColorPrimary: Colors.deepPurple.withOpacity(0.9),
+//   activeColorPrimary: AppColors.primaryColor,
 //   inactiveColorPrimary: Colors.grey.withOpacity(0.9),
 // ),
 // PersistentBottomNavBarItem(
@@ -179,7 +177,7 @@ class NotificationBell extends StatelessWidget {
 //     color: Colors.white,
 //   ),
 //   title: GlobalVariableController.roleId == 4 ? "Attendance" : "Fees",
-//   activeColorPrimary: Colors.deepPurple.withOpacity(0.9),
+//   activeColorPrimary: AppColors.primaryColor,
 //   inactiveColorPrimary: Colors.grey.withOpacity(0.9),
 // ),
 // PersistentBottomNavBarItem(
@@ -192,7 +190,7 @@ class NotificationBell extends StatelessWidget {
 //     size: 18,
 //   ),
 //   title: "Routine",
-//   activeColorPrimary: Colors.deepPurple.withOpacity(0.9),
+//   activeColorPrimary: AppColors.primaryColor,
 //   inactiveColorPrimary: Colors.grey.withOpacity(0.9),
 // ),
 // PersistentBottomNavBarItem(
@@ -205,7 +203,7 @@ class NotificationBell extends StatelessWidget {
 //     size: 18,
 //   ),
 //   title: "Profile",
-//   activeColorPrimary: Colors.deepPurple.withOpacity(0.9),
+//   activeColorPrimary: AppColors.primaryColor,
 //   inactiveColorPrimary: Colors.grey.withOpacity(0.9),
 // ),
 // PersistentBottomNavBarItem(
@@ -246,7 +244,7 @@ class NotificationBell extends StatelessWidget {
 //     ),
 //   ),
 //   title: "Notification".tr,
-//   activeColorPrimary: Colors.deepPurple.withOpacity(0.9),
+//   activeColorPrimary: AppColors.primaryColor,
 //   inactiveColorPrimary: Colors.grey.withOpacity(0.9),
 // ),
 
@@ -282,3 +280,12 @@ class NotificationBell extends StatelessWidget {
 //     ),
 //   ],
 // ),
+/// Libellé de la barre du bas sur une ligne : les titres français longs
+/// (« Emploi du temps », « Notifications ») sont coupés à 10 sp.
+TextStyle navTitleStyle(String? title) {
+  final length = title?.length ?? 0;
+  return TextStyle(
+      fontFamily: "Poppins",
+      fontWeight: FontWeight.w300,
+      fontSize: length > 13 ? 8.sp : (length > 10 ? 9.sp : 10.sp));
+}

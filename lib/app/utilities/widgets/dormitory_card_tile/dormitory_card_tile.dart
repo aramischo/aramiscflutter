@@ -93,16 +93,17 @@ class DormitoryCardTile extends StatelessWidget {
                               ? Container(
                                   padding: const EdgeInsets.all(5),
                                   decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(3),
+                                      borderRadius: BorderRadius.circular(6),
                                       color: activeStatusColor),
                                   child: Center(
-                                    child: Text(
-                                      activeStatus ??
-                                          AppText.noDataAvailable.tr,
-                                      style: AppTextStyle.textStyle10WhiteW400,
-                                      overflow: TextOverflow.ellipsis,
-                                      maxLines: 1,
-                                    ),
+                                    child: FittedBox(
+                                        fit: BoxFit.scaleDown,
+                                        child: Text(
+                                            activeStatus ??
+                                                AppText.noDataAvailable.tr,
+                                            style: AppTextStyle
+                                                .textStyle10WhiteW400,
+                                            maxLines: 1)),
                                   ),
                                 )
                               : const SizedBox(),

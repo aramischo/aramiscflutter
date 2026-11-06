@@ -40,7 +40,7 @@ class CustomPopupDialogue extends StatelessWidget {
           ),
         ),
         isLoading
-            ? const Center(
+            ? Center(
                 child: CircularProgressIndicator(
                   color: AppColors.primaryColor,
                 ),

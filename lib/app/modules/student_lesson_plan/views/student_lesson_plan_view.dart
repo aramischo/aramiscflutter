@@ -33,10 +33,10 @@ class StudentLessonPlanView extends GetView<StudentLessonPlanController> {
               child: controller.lessonLoader.value
                   ? Center(
                       child: Platform.isAndroid
-                          ? const CircularProgressIndicator(
+                          ? CircularProgressIndicator(
                               color: AppColors.primaryColor,
                             )
-                          : const CircularProgressIndicator(
+                          : CircularProgressIndicator(
                               valueColor: AlwaysStoppedAnimation(
                                 AppColors.primaryColor,
                               ),

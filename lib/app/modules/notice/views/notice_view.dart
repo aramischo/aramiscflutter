@@ -35,7 +35,7 @@ class NoticeView extends GetView<NoticeController> {
                   controller.loadingController.isLoading
                       ? SizedBox(
                           height: Get.height,
-                          child: const Center(
+                          child: Center(
                             child: CircularProgressIndicator(
                               color: AppColors.primaryColor,
                             ),

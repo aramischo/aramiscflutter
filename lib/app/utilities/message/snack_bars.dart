@@ -119,7 +119,7 @@ void showBasicProgressDialog({required String message}) {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const SizedBox(
+            SizedBox(
               height: 24,
               width: 24,
               child: CircularProgressIndicator(

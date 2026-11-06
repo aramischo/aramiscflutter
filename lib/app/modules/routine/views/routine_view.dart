@@ -37,7 +37,7 @@ class RoutineView extends GetView<RoutineController> {
                     padding: const EdgeInsets.symmetric(
                         horizontal: 10, vertical: 20),
                     child: controller.loadingController.isLoading
-                        ? const Center(
+                        ? Center(
                             child: CircularProgressIndicator(
                               color: AppColors.primaryColor,
                             ),

@@ -67,7 +67,7 @@ class AdminClassAttendanceSearchController extends GetxController {
       isLoading.value = true;
 
       final response = await BaseClient().postData(
-        url: globalRxVariableController.roleId.value == 1
+        url: globalRxVariableController.isAdmin
             ? AramiscApi.getAdminStudentSearchAttendanceList(
                 classId: studentClassId,
                 sectionId: studentSectionId,

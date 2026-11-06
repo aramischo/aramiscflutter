@@ -90,7 +90,7 @@ class CustomAppBar extends GetView<HomeController> {
                           },
                           title: 'Confirmation'.tr,
                           subTitle:
-                              "${"Are you sure".tr}\n${"you want to logout".tr}?",
+                              'Would you like to logout?'.tr,
                           noText: 'Cancel'.tr,
                           yesText: 'Logout'.tr,
                         ),

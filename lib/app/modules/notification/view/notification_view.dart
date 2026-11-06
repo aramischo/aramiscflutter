@@ -59,7 +59,7 @@ class NotificationView extends GetView<NotificationController> {
                 ),
               ),
               controller.isLoading.value
-                  ? const Center(
+                  ? Center(
                       child: CircularProgressIndicator(
                       color: AppColors.primaryColor,
                     ))

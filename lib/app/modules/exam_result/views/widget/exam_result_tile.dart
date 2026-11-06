@@ -74,16 +74,18 @@ class ExamResultTile extends StatelessWidget {
                   5.verticalSpacing,
                   Container(
                     width: 60.w,
-                    padding: const EdgeInsets.all(3),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 6, vertical: 3),
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(3),
+                        borderRadius: BorderRadius.circular(6),
                         color: activeStatusColor ??
                             AppColors.homeworkStatusRedColor),
                     child: Center(
-                      child: Text(
-                        result?.tr ?? "",
-                        style: AppTextStyle.textStyle10WhiteW400,
-                      ),
+                      child: FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Text(result?.tr ?? "",
+                              style: AppTextStyle.textStyle10WhiteW400,
+                              maxLines: 1)),
                     ),
                   )
                 ],

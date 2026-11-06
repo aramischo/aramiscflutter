@@ -37,7 +37,7 @@ class AdminStudentsSearchView extends GetView<AdminStudentsSearchController> {
 
                   /// Student Class List Dropdown
                   controller.loadingController.isLoading
-                      ? const Center(
+                      ? Center(
                           child: CircularProgressIndicator(
                             color: AppColors.primaryColor,
                           ),
@@ -64,7 +64,7 @@ class AdminStudentsSearchView extends GetView<AdminStudentsSearchController> {
 
                   /// Student Section List Dropdown
                   controller.sectionLoader.value
-                      ? const Center(
+                      ? Center(
                           child: CircularProgressIndicator(
                             color: AppColors.primaryColor,
                           ),

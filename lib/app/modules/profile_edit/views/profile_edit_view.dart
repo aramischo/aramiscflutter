@@ -126,7 +126,7 @@ class ProfileEditView extends GetView<ProfileEditController> {
                             child: Container(
                               height: 25.w,
                               width: 25.w,
-                              decoration: const BoxDecoration(
+                              decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   color: AppColors.primaryColor),
                               child: Center(
@@ -166,11 +166,11 @@ class ProfileEditView extends GetView<ProfileEditController> {
                 EditProfileTextField(
                   labelText: AppText.editProfileEmail.tr,
                   readOnly:
-                      controller.globalRxVariableController.roleId.value == 1
+                      controller.globalRxVariableController.isAdmin
                           ? false
                           : true,
                   suffixIcon:
-                      controller.globalRxVariableController.roleId.value == 1
+                      controller.globalRxVariableController.isAdmin
                           ? InkWell(
                               onTap: () => controller.userProfileInfoUpdate(),
                               child: Image.asset(
@@ -190,7 +190,7 @@ class ProfileEditView extends GetView<ProfileEditController> {
                 EditProfileTextField(
                   labelText: AppText.editProfilePhoneNumber.tr,
                   suffixIcon:
-                      controller.globalRxVariableController.roleId.value == 1
+                      controller.globalRxVariableController.isAdmin
                           ? InkWell(
                               onTap: () => controller.userProfileInfoUpdate(),
                               child: Image.asset(
@@ -202,7 +202,7 @@ class ProfileEditView extends GetView<ProfileEditController> {
                             )
                           : const SizedBox(),
                   readOnly:
-                      controller.globalRxVariableController.roleId.value == 1
+                      controller.globalRxVariableController.isAdmin
                           ? false
                           : true,
                   hintText: AppText.editProfilePhoneNumber.tr,

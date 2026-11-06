@@ -69,7 +69,7 @@ class ClassTile extends StatelessWidget {
                       ),
                       isTapped
                           ? const SizedBox()
-                          : const Icon(
+                          : Icon(
                               Icons.arrow_forward_ios_outlined,
                               color: AppColors.primaryColor,
                             )

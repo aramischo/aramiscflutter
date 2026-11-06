@@ -28,7 +28,7 @@ class LoginView extends GetView<LoginController> {
               child: SingleChildScrollView(
                 child: Container(
                   height: Get.height,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     gradient: LinearGradient(
                       colors: [
                         AppColors.primaryColor,

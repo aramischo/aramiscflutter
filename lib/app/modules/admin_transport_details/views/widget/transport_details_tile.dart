@@ -42,7 +42,7 @@ class TransportDetailsTile extends StatelessWidget {
                 child: Container(
                   padding: const EdgeInsets.all(5),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(2),
+                    borderRadius: BorderRadius.circular(6),
                     color: AppColors.primaryColor,
                   ),
                   child: Text(

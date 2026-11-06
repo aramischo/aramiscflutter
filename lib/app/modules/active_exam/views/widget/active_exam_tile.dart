@@ -80,18 +80,18 @@ class ActiveExamTile extends StatelessWidget {
                     activeStatus != null
                         ? Container(
                             width: 60.w,
-                            padding: const EdgeInsets.all(3),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 6, vertical: 3),
                             decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(3),
+                                borderRadius: BorderRadius.circular(6),
                                 color: activeStatusColor ??
                                     AppColors.homeworkStatusRedColor),
                             child: Center(
-                              child: Text(
-                                activeStatus ?? "",
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                style: AppTextStyle.textStyle10WhiteW300,
-                              ),
+                              child: FittedBox(
+                                  fit: BoxFit.scaleDown,
+                                  child: Text(activeStatus ?? "",
+                                      style: AppTextStyle.textStyle10WhiteW300,
+                                      maxLines: 1)),
                             ),
                           )
                         : const SizedBox(),

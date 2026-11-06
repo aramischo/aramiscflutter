@@ -23,11 +23,11 @@ class LoadingWidget extends GetWidget<LoadingController> {
                   ),
                   Center(
                     child: Platform.isIOS
-                        ? const CupertinoActivityIndicator(
+                        ? CupertinoActivityIndicator(
                             color: AppColors.primaryColor,
                             radius: 24,
                           )
-                        : const CircularProgressIndicator(
+                        : CircularProgressIndicator(
                             valueColor: AlwaysStoppedAnimation(
                               AppColors.primaryColor,
                             ),

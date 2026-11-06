@@ -1,9 +1,85 @@
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 
 class AppColors {
-  // static const primaryColor            = Color(0xFF943AE3);
-  static const primaryColor               = Color(0xFF862CFF);
-  static const secondaryColor             = Color(0xFFB844D1);
+  /// Couleurs de marque réglables depuis le back-office (Réglages généraux),
+  /// reçues avec language-list / general-settings et mémorisées pour le démarrage suivant.
+  static const _storageKey = 'mobile_colors';
+
+  static Color primaryColor               = const Color(0xFF862CFF);
+  static Color secondaryColor             = const Color(0xFFB844D1);
+  static Color appBackgroundColor         = const Color(0xFF6100B8);
+  static Color appButtonColor             = const Color(0xFF953BE4);
+  static Color lessonButtonColor          = const Color(0xFF862CFF);
+  static Color backgroundPrimaryColor     = const Color(0xFF6100B8);
+  static Color backgroundSecondaryColor   = const Color(0xFF943AE3);
+  static Color homeTextColor              = const Color(0xFF943AE3);
+  static Color parentsIconCardBackgroundColor = const Color(0xFF953BE4);
+  static Color profileIndicatorColor      = const Color(0xFFB844D1);
+
+  /// Couleurs mémorisées lors du dernier lancement (à appeler avant runApp)
+  static void loadSaved() {
+    try {
+      final saved = GetStorage().read(_storageKey);
+      if (saved is Map) _apply(Map<String, dynamic>.from(saved));
+    } catch (_) {}
+  }
+
+  /// Applique les couleurs reçues du serveur. Retourne true si quelque chose a changé.
+  static bool applyFromServer(dynamic colors) {
+    if (colors is! Map) return false;
+    final map = Map<String, dynamic>.from(colors);
+    final changed = _apply(map);
+    if (changed) {
+      try {
+        GetStorage().write(_storageKey, map);
+      } catch (_) {}
+    }
+    return changed;
+  }
+
+  static bool _apply(Map<String, dynamic> map) {
+    final before = [primaryColor, secondaryColor, appBackgroundColor, backgroundSecondaryColor, appButtonColor];
+    final primary = _parse(map['primary']);
+    final secondary = _parse(map['secondary']);
+    final headerStart = _parse(map['header_start']);
+    final headerEnd = _parse(map['header_end']);
+    final button = _parse(map['button']);
+    if (primary != null) {
+      primaryColor = primary;
+      lessonButtonColor = primary;
+    }
+    if (secondary != null) {
+      secondaryColor = secondary;
+      profileIndicatorColor = secondary;
+    }
+    if (headerStart != null) {
+      appBackgroundColor = headerStart;
+      backgroundPrimaryColor = headerStart;
+    }
+    if (headerEnd != null) {
+      backgroundSecondaryColor = headerEnd;
+      homeTextColor = headerEnd;
+    }
+    if (button != null) {
+      appButtonColor = button;
+      parentsIconCardBackgroundColor = button;
+    }
+    final after = [primaryColor, secondaryColor, appBackgroundColor, backgroundSecondaryColor, appButtonColor];
+    for (var i = 0; i < before.length; i++) {
+      if (before[i] != after[i]) return true;
+    }
+    return false;
+  }
+
+  /// "#RRGGBB" -> Color
+  static Color? _parse(dynamic hex) {
+    if (hex is! String) return null;
+    final value = hex.replaceFirst('#', '');
+    if (!RegExp(r'^[0-9A-Fa-f]{6}$').hasMatch(value)) return null;
+    return Color(int.parse('FF$value', radix: 16));
+  }
+
   static const loginIconColor             = Color(0xFFA6ABCE);
   static const pinkColor                  = Color(0xFFEBDAF9);
   static const lightPinkColor             = Color(0xFFFDFBFF);
@@ -12,18 +88,12 @@ class AppColors {
   static const dividerColor               = Color(0xFFEBD8FC);
   static const hintTextColor              = Color(0xFF635976);
   static const smallCardColor             = Color(0xFFF4EBFC);
-  static const appBackgroundColor         = Color(0xFF6100B8);
-  static const appButtonColor             = Color(0xFF953BE4);
-  static const lessonButtonColor          = Color(0xFF862CFF);
-  static const backgroundPrimaryColor     = Color(0xFF6100B8);
-  static const backgroundSecondaryColor   = Color(0xFF943AE3);
   static const appColorB5C1CB             = Color(0xFFB6B6B6);
   static const appColor324844             = Color(0xFF324844);
   static const textColor635976            = Color(0xFF635976);
   static const borderColorEAE7F0          = Color(0xFFEAE7F0);
 
  /// Text Colors
-  static const homeTextColor = Color(0xFF943AE3);
   static const homeIconBackgroundColor = Color(0xFFF4EBFC);
 
 
@@ -32,7 +102,6 @@ class AppColors {
 
   /// Profile Colors
   static const profileTopContainerColor = Color(0xFFF4EBFC);
-  static const parentsIconCardBackgroundColor = Color(0xFF953BE4);
   static const parentsCardBorderColor = Color(0xFFF2F0F6);
   static const parentsDesignationColor = Color(0xFFF2F0F6);
   static const profileTitleColor = Color(0xFF635976);
@@ -41,7 +110,6 @@ class AppColors {
   static const profilePicBackgroundColor = Color(0xFF556080);
   static const profileCardBackgroundColor = Color(0xFF412C56);
   static const profileCardTextColor = Color(0xFFF2F0F6);
-  static const profileIndicatorColor = Color(0xFFB844D1);
   static const editProfileTextFieldLabelColor = Color(0xFF8489AB);
 
   /// Syllabus

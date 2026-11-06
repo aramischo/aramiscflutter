@@ -152,7 +152,7 @@ class FeesTile extends StatelessWidget {
                               Container(
                                 padding: const EdgeInsets.all(5),
                                 decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(3),
+                                    borderRadius: BorderRadius.circular(6),
                                     color: statusColor ??
                                         AppColors.homeworkStatusRedColor),
                                 child: Center(

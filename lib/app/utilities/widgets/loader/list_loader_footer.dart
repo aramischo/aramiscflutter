@@ -31,11 +31,11 @@ class ListLoaderFooter extends StatelessWidget {
               height: AppDimens.primaryRadius * 2,
               width: AppDimens.primaryRadius * 2,
               child: Platform.isIOS
-                  ? const CupertinoActivityIndicator(
+                  ? CupertinoActivityIndicator(
                       color: AppColors.primaryColor,
                       radius: 10,
                     )
-                  : const CircularProgressIndicator(
+                  : CircularProgressIndicator(
                       strokeWidth: 2,
                       color: AppColors.primaryColor,
                     ),

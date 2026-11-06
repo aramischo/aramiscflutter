@@ -32,7 +32,7 @@ class ApplyLeaveView extends GetView<ApplyLeaveController> {
                 () => Column(
                   children: [
                     controller.isLoading.value
-                        ? const CircularProgressIndicator(
+                        ? CircularProgressIndicator(
                             color: AppColors.primaryColor,
                           )
                         : DuplicateDropdown(

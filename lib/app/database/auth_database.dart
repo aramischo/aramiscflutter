@@ -1,14 +1,17 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
 import 'package:aramisc/config/global_variable/global_variable_controller.dart';
 import 'package:aramisc/config/language/controller/language_controller.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../domain/core/model/profile_ui_model.dart';
+import '../../push_notification/app_push_notification.dart';
 
 class AuthDatabase {
   static AuthDatabase? _instance;
@@ -21,6 +24,25 @@ class AuthDatabase {
 
   void init() async {
     await GetStorage.init(AuthDBKeys.dbName);
+  }
+
+  static const _secureStorage = FlutterSecureStorage();
+  static const _passwordKey = 'password';
+
+  /// Mot de passe gardé pour la connexion automatique de la classe virtuelle (stockage chiffré).
+  Future<void> savePassword(String password) async {
+    await _secureStorage.write(key: _passwordKey, value: password);
+  }
+
+  /// Reprend aussi le mot de passe en clair laissé par les anciennes versions, puis l'efface.
+  Future<String?> getPassword() async {
+    final box = GetStorage();
+    final String? legacyPassword = box.read(_passwordKey);
+    if (legacyPassword != null) {
+      await savePassword(legacyPassword);
+      await box.remove(_passwordKey);
+    }
+    return _secureStorage.read(key: _passwordKey);
   }
 
   Future<bool> saveAuthInfo({
@@ -109,6 +131,11 @@ class AuthDatabase {
       await storage.remove(AuthDBKeys.data);
       await storage.remove(AuthDBKeys.token);
       await storage.save();
+      await GetStorage().remove(_passwordKey);
+      await _secureStorage.delete(key: _passwordKey);
+
+      // Sans attendre : hors ligne, le désabonnement ne doit pas bloquer la déconnexion.
+      unawaited(unsubscribeFromAllTopics());
 
       globalRxVariableController.token.value = null;
       globalRxVariableController.userId.value = null;
@@ -123,16 +150,13 @@ class AuthDatabase {
       globalRxVariableController.isStudent.value = false;
       globalRxVariableController.isRtl.value = false;
 
+      // L'application est en français : la déconnexion ne doit pas repasser l'interface en anglais.
       final sharedPref = await SharedPreferences.getInstance();
-      sharedPref.setString('language', 'en');
-      sharedPref.setString('language_name', 'English');
+      Get.find<LanguageController>().langName.value = 'Français';
+      language = 'fr';
 
-      Get.find<LanguageController>().langName.value =
-          sharedPref.getString('language_name') ?? 'English';
-      language = sharedPref.getString('language') ?? 'en';
-
-      Get.find<LanguageController>().appLocale = 'en';
-      Get.find<LanguageController>().langCode = 'en';
+      Get.find<LanguageController>().appLocale = 'fr';
+      Get.find<LanguageController>().langCode = 'fr';
       Get.updateLocale(
           Locale(Get.find<LanguageController>().appLocale.toString()));
       sharedPref.clear();

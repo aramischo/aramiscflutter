@@ -48,7 +48,7 @@ class AdminSubjectAttendanceSearchListController extends GetxController {
       adminStudentSubSearchList.clear();
       isLoading.value = true;
       final response = await BaseClient().postData(
-        url: globalRxVariableController.roleId.value == 1
+        url: globalRxVariableController.isAdmin
             ? AramiscApi.getAdminSubjectSearchAttendanceList(
                 classId: studentClassId,
                 sectionId: studentSectionId,
@@ -145,7 +145,7 @@ class AdminSubjectAttendanceSearchListController extends GetxController {
       saveLoader.value = true;
 
       final response = await BaseClient().postData(
-          url: globalRxVariableController.roleId.value == 1
+          url: globalRxVariableController.isAdmin
               ? AramiscApi.adminSubmitSubjectWiseStudentAttendance
               : AramiscApi.teacherSubmitSubjectWiseStudentAttendance,
           header: GlobalVariable.header,
@@ -197,7 +197,7 @@ class AdminSubjectAttendanceSearchListController extends GetxController {
       holidayLoader.value = true;
 
       final response = await BaseClient().postData(
-          url: globalRxVariableController.roleId.value == 1
+          url: globalRxVariableController.isAdmin
               ? AramiscApi.adminAttendanceMarkUnMarkHolyDay
               : AramiscApi.teacherSubjectWiseAttendanceMarkUnMarkHolyDay,
           header: GlobalVariable.header,
@@ -309,7 +309,7 @@ class AdminSubjectAttendanceSearchListController extends GetxController {
                   ),
                   Obx(
                     () => saveLoader.value == true
-                        ? const CircularProgressIndicator(
+                        ? CircularProgressIndicator(
                             color: AppColors.primaryColor,
                           )
                         : SecondaryButton(

@@ -68,13 +68,13 @@ class SplashController extends GetxController with GetTickerProviderStateMixin {
         debugPrint('Parent Id ::: ${globalRxVariableController.parentId}');
       }
 
-      if (authDatabase.getUserInfo()!.data.user.roleId == 1 ||
-          authDatabase.getUserInfo()!.data.user.roleId == 4) {
+      if (authDatabase.getUserInfo()!.data.user.roleId != 2 &&
+          authDatabase.getUserInfo()!.data.user.roleId != 3) {
         globalRxVariableController.staffId.value =
             authDatabase.getUserInfo()!.data.user.staffId;
-        authDatabase.getUserInfo()!.data.user.roleId == 1
-            ? globalRxVariableController.roleName.value = 'Admin'
-            : globalRxVariableController.roleName.value = 'Teacher';
+        globalRxVariableController.roleName.value =
+            GlobalRxVariableController.roleLabel(
+                authDatabase.getUserInfo()!.data.user.roleId);
         debugPrint(
             'Admin/Teacher Id ::: ${globalRxVariableController.staffId}');
       }

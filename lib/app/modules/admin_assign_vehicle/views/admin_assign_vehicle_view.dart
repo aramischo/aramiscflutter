@@ -33,7 +33,7 @@ class AdminAssignVehicleView extends GetView<AdminAssignVehicleController> {
                 10.h.verticalSpacing,
                 Obx(
                   () => controller.dropdownLoader.value
-                      ? const Center(
+                      ? Center(
                           child: CircularProgressIndicator(
                             color: AppColors.primaryColor,
                           ),
@@ -56,7 +56,7 @@ class AdminAssignVehicleView extends GetView<AdminAssignVehicleController> {
                 10.h.verticalSpacing,
                 Obx(
                   () => controller.dropdownLoader.value
-                      ? const Center(
+                      ? Center(
                           child: CircularProgressIndicator(
                             color: AppColors.primaryColor,
                           ),

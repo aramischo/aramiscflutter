@@ -45,7 +45,7 @@ class AdminClassSetAttendanceView
                         5.h.horizontalSpacing,
                         Obx(
                           () => controller.holidayLoader.value
-                              ? const CircularProgressIndicator(
+                              ? CircularProgressIndicator(
                                   color: AppColors.primaryColor,
                                 )
                               : InkWell(

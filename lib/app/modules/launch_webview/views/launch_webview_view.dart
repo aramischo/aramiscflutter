@@ -1,3 +1,4 @@
+import 'package:aramisc/app/data/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:aramisc/app/data/constants/image_path.dart';
@@ -19,12 +20,12 @@ class LaunchWebviewView extends GetView<LaunchWebviewController> {
             automaticallyImplyLeading: false,
             flexibleSpace: Container(
               padding: const EdgeInsets.only(top: 20),
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage(ImagePath.appToolbarBg),
                   fit: BoxFit.fill,
                 ),
-                color: Colors.deepPurple,
+                color: AppColors.primaryColor,
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,

@@ -8,7 +8,7 @@ class MainButton extends StatelessWidget {
   final String title;
   final Function()? onTap;
   final bool loading;
-  final Color backgroundColor;
+  final Color? backgroundColor;
   final double? borderRadius;
   final double? buttonHeight;
 
@@ -16,7 +16,7 @@ class MainButton extends StatelessWidget {
     required this.title,
     this.onTap,
     this.loading = false,
-    this.backgroundColor = AppColors.primaryColor,
+    this.backgroundColor,
     this.borderRadius,
     super.key, this.buttonHeight,
   });
@@ -26,7 +26,7 @@ class MainButton extends StatelessWidget {
     return TextButton(
       onPressed: loading ? null : onTap,
       style: mainButtonStyle(
-        mainColor: backgroundColor,
+        mainColor: backgroundColor ?? AppColors.primaryColor,
         borderRadius: borderRadius ?? AppDimens.radius12,
 
 
@@ -51,7 +51,7 @@ class MainButton extends StatelessWidget {
             ),
             Visibility(
               visible: loading,
-              child: const SizedBox(
+              child: SizedBox(
                 height: 16,
                 width: 16,
                 child: CircularProgressIndicator(

@@ -2,6 +2,40 @@ import 'dart:developer';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:get/get.dart';
+
+import '../app/database/auth_database.dart';
+import '../app/routes/app_pages.dart';
+
+/// Topics auxquels la connexion abonne l'appareil
+const List<String> notificationTopics = [
+  'all_users',
+  'admins',
+  'students',
+  'parents',
+  'teachers',
+];
+
+bool _openNotificationsWhenReady = false;
+
+/// Ouvre la liste des notifications après un clic sur l'une d'elles.
+void openNotifications() {
+  if (AuthDatabase.instance.auth()) {
+    Get.toNamed(Routes.NOTIFICATION);
+  }
+}
+
+/// Application lancée depuis une notification : l'accueil ouvrira la liste une fois affiché.
+void openNotificationsWhenReady() {
+  _openNotificationsWhenReady = true;
+}
+
+void openPendingNotifications() {
+  if (_openNotificationsWhenReady) {
+    _openNotificationsWhenReady = false;
+    openNotifications();
+  }
+}
 
 /// Create a [AndroidNotificationChannel] for heads up notifications
 late AndroidNotificationChannel channel;
@@ -38,7 +72,10 @@ Future<void> setupFlutterNotifications() async {
     iOS: iosSettings,
   );
 
-  await flutterLocalNotificationsPlugin.initialize(initSettings);
+  await flutterLocalNotificationsPlugin.initialize(
+    initSettings,
+    onDidReceiveNotificationResponse: (_) => openNotifications(),
+  );
 
   // Créer le channel Android
   await flutterLocalNotificationsPlugin
@@ -113,7 +150,6 @@ Future<void> subscribeToTopic(String topic) async {
 }
 
 /// Se désabonner d'un topic Firebase
-/// À appeler à la déconnexion
 Future<void> unsubscribeFromTopic(String topic) async {
   try {
     await FirebaseMessaging.instance.unsubscribeFromTopic(topic);
@@ -121,4 +157,9 @@ Future<void> unsubscribeFromTopic(String topic) async {
   } catch (e) {
     log("Unsubscribe error: $e");
   }
+}
+
+/// Se désabonner de tous les topics, à la déconnexion
+Future<void> unsubscribeFromAllTopics() async {
+  await Future.wait(notificationTopics.map(unsubscribeFromTopic));
 }

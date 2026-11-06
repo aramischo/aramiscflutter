@@ -156,7 +156,7 @@ class BankPaymentListView extends GetView<BankPaymentListController> {
                       /// Section Dropdown
                       controller
                               .adminStudentsSearchController.sectionLoader.value
-                          ? const CircularProgressIndicator(
+                          ? CircularProgressIndicator(
                               color: AppColors.primaryColor,
                             )
                           : SizedBox(

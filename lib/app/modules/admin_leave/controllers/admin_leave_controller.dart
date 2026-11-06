@@ -435,7 +435,7 @@ class AdminLeaveController extends GetxController {
                 20.verticalSpacing,
                 Obx(
                   () => saveLoader.value
-                      ? const Center(
+                      ? Center(
                           child: CircularProgressIndicator(
                           color: AppColors.primaryColor,
                         ))

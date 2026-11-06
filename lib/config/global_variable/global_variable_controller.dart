@@ -41,6 +41,26 @@ class GlobalRxVariableController extends GetxController {
   final notificationCount = Rxn<int>();
   final studentRecordId = Rxn<int>();
   final roleId = Rxn<int>();
+
+  /// Super admin (1) ou admin de l'école (5)
+  bool get isAdmin => roleId.value == 1 || roleId.value == 5;
+
+  /// Libellé du rôle (traduit à l'affichage)
+  static String roleLabel(int? roleId) {
+    switch (roleId) {
+      case 1:
+      case 5:
+        return 'Admin';
+      case 2:
+        return 'Student';
+      case 3:
+        return 'Parent';
+      case 4:
+        return 'Teacher';
+      default:
+        return 'Staff';
+    }
+  }
   final roleName = Rxn<String>('');
   final fullName = Rxn<String>('');
   final classId = Rxn<int>();

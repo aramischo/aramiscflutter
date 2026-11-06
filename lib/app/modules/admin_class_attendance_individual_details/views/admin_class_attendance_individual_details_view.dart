@@ -22,7 +22,7 @@ class AdminClassAttendanceIndividualDetailsView
       body: Obx(() => CustomBackground(
             customWidget: SingleChildScrollView(
               child: controller.isLoading.value
-                  ? const Center(
+                  ? Center(
                       child: CircularProgressIndicator(
                       color: AppColors.primaryColor,
                     ))

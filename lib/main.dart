@@ -18,8 +18,7 @@ import 'initializer.dart';
 @pragma('vm:entry-point')
 Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  await setupFlutterNotifications();
-  showFlutterNotification(message);
+  // Android affiche déjà seul les messages avec notification : les réafficher ici crée un doublon.
   debugPrint('Handling a background message ${message.messageId}');
 }
 
@@ -45,10 +44,10 @@ void main() async {
   );
   log('Permission notifications: ${settings.authorizationStatus}');
 
-  // Récupérer et logger le FCM token
-  final fcmToken = await messaging.getToken();
+  // Récupérer et logger le FCM token. Peut échouer sans réseau (ou APNs pas prêt sur iOS) :
+  // getFcmDeviceToken capte l'erreur, sinon l'application ne démarre jamais.
+  final fcmToken = await getFcmDeviceToken();
   log('FCM Token: $fcmToken');
-  // TODO: envoyer ce token à votre backend pour cibler cet appareil
 
   // Écouter les rafraîchissements de token
   messaging.onTokenRefresh.listen((newToken) {
@@ -67,14 +66,14 @@ void main() async {
   // App ouverte depuis une notification (background → foreground)
   FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
     log('onMessageOpenedApp: ${message.data}');
-    // TODO: navigation vers l'écran concerné selon message.data
+    openNotifications();
   });
 
   // App lancée depuis une notification (terminated state)
   final initialMessage = await FirebaseMessaging.instance.getInitialMessage();
   if (initialMessage != null) {
     log('App launched from notification: ${initialMessage.data}');
-    // TODO: navigation vers l'écran concerné selon initialMessage.data
+    openNotificationsWhenReady();
   }
 
   runApp(

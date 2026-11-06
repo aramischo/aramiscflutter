@@ -36,7 +36,7 @@ class AdminClassAttendanceSearchIndividualView
 
                   /// Student Class List Dropdown
                   controller.loadingController.isLoading
-                      ? const Center(
+                      ? Center(
                           child: CircularProgressIndicator(
                             color: AppColors.primaryColor,
                           ),
@@ -68,7 +68,7 @@ class AdminClassAttendanceSearchIndividualView
 
                   /// Student Section List Dropdown
                   controller.adminStudentsSearchController.sectionLoader.value
-                      ? const Center(
+                      ? Center(
                           child: CircularProgressIndicator(
                             color: AppColors.primaryColor,
                           ),
@@ -104,7 +104,7 @@ class AdminClassAttendanceSearchIndividualView
                   ),
                   30.h.verticalSpacing,
                   controller.adminStudentsSearchController.searchLoader.value
-                      ? const CircularProgressIndicator(
+                      ? CircularProgressIndicator(
                           color: AppColors.primaryColor,
                         )
                       : PrimaryButton(

@@ -58,7 +58,7 @@ class AdminLeaveView extends GetView<AdminLeaveController> {
                     ///Pending
                     Obx(
                       () => controller.loadingController.isLoading
-                          ? const Center(
+                          ? Center(
                               child: CircularProgressIndicator(
                                 color: AppColors.primaryColor,
                               ),
@@ -138,7 +138,7 @@ class AdminLeaveView extends GetView<AdminLeaveController> {
 
                     Obx(
                       () => controller.loadingController.isLoading
-                          ? const Center(
+                          ? Center(
                               child: CircularProgressIndicator(
                                 color: AppColors.primaryColor,
                               ),
@@ -230,7 +230,7 @@ class AdminLeaveView extends GetView<AdminLeaveController> {
 
                     Obx(
                       () => controller.loadingController.isLoading
-                          ? const Center(
+                          ? Center(
                               child: CircularProgressIndicator(
                                 color: AppColors.primaryColor,
                               ),

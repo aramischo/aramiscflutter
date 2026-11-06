@@ -31,7 +31,7 @@ class TeApplyLeaveView extends GetView<TeApplyLeaveController> {
               () => Column(
                 children: [
                   controller.leaveLoader.value
-                      ? const CircularProgressIndicator(
+                      ? CircularProgressIndicator(
                           color: AppColors.primaryColor,
                         )
                       : DuplicateDropdown(

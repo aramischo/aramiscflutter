@@ -77,6 +77,8 @@ const Map<String, String> en = {
   "Syllabus": "Syllabus",
   "Other Downloads": "Other Downloads",
   "Home": "Home",
+  "Nav Notifications": "Notifications",
+  "Nav Routine": "Routine",
   "Notification": "Notification",
   "No Data Available": "No Data Available",
   "You have": "You have",

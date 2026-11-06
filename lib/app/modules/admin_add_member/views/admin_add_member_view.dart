@@ -40,7 +40,7 @@ class AdminAddMemberView extends GetView<AdminAddMemberController> {
 
                   /// Role dropdown
                   controller.rolesLoader.value
-                      ? const CircularProgressIndicator(
+                      ? CircularProgressIndicator(
                           color: AppColors.primaryColor,
                         )
                       : DuplicateDropdown(
@@ -66,7 +66,7 @@ class AdminAddMemberView extends GetView<AdminAddMemberController> {
                       ? Padding(
                           padding: const EdgeInsets.symmetric(vertical: 10),
                           child: controller.classLoader.value
-                              ? const CircularProgressIndicator(
+                              ? CircularProgressIndicator(
                                   color: AppColors.primaryColor,
                                 )
                               : DuplicateDropdown(
@@ -88,7 +88,7 @@ class AdminAddMemberView extends GetView<AdminAddMemberController> {
                   /// Student or Parents section
                   controller.rolesId.value == 2 || controller.rolesId.value == 3
                       ? controller.sectionLoader.value
-                          ? const CircularProgressIndicator(
+                          ? CircularProgressIndicator(
                               color: AppColors.primaryColor,
                             )
                           : Padding(
@@ -123,7 +123,7 @@ class AdminAddMemberView extends GetView<AdminAddMemberController> {
                   controller.rolesId.value == 2 || controller.rolesId.value == 3
                       ? const SizedBox()
                       : controller.userNameLoader.value
-                          ? const CircularProgressIndicator(
+                          ? CircularProgressIndicator(
                               color: AppColors.primaryColor,
                             )
                           : DuplicateDropdown(
@@ -140,7 +140,7 @@ class AdminAddMemberView extends GetView<AdminAddMemberController> {
                   /// Student dropdown
                   controller.rolesId.value == 2
                       ? controller.studentLoader.value
-                          ? const CircularProgressIndicator(
+                          ? CircularProgressIndicator(
                               color: AppColors.primaryColor,
                             )
                           : DuplicateDropdown(
@@ -156,7 +156,7 @@ class AdminAddMemberView extends GetView<AdminAddMemberController> {
                       : const SizedBox(),
                   controller.rolesId.value == 3
                       ? controller.parentLoader.value
-                          ? const CircularProgressIndicator(
+                          ? CircularProgressIndicator(
                               color: AppColors.primaryColor,
                             )
                           : DuplicateDropdown(

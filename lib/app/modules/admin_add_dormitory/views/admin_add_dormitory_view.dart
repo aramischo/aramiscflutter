@@ -74,7 +74,7 @@ class AdminAddDormitoryView extends GetView<AdminAddDormitoryController> {
                       40.h.verticalSpacing,
                       Obx(
                         () => controller.loadingController.isLoading
-                            ? const CircularProgressIndicator(
+                            ? CircularProgressIndicator(
                                 color: AppColors.primaryColor,
                               )
                             : PrimaryButton(

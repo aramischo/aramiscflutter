@@ -16,29 +16,36 @@ class PrimaryAppBar extends StatelessWidget {
       child: AppBar(
         backgroundColor: AppColors.primaryColor.withOpacity(0),
         elevation: 0,
+        // Logo + titre : 56 px par défaut coupaient le titre
+        toolbarHeight: 60.h,
         title: Row(
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  height: 25.h,
-                  width: 100.w,
-                  alignment: Alignment.centerLeft,
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage(ImagePath.appLogo),
+            Flexible(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    height: 25.h,
+                    width: 100.w,
+                    alignment: Alignment.centerLeft,
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage(ImagePath.appLogo),
+                      ),
                     ),
                   ),
-                ),
-                Text(
-                  title,
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 10.sp,
-                      fontWeight: FontWeight.w400),
-                )
-              ],
+                  Text(
+                    title,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 10.sp,
+                        fontWeight: FontWeight.w400),
+                  )
+                ],
+              ),
             ),
           ],
         ),

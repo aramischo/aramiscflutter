@@ -57,13 +57,14 @@ class BankPaymentTile extends StatelessWidget {
                     width: Get.width * 0.2,
                     padding: const EdgeInsets.all(5),
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(3),
+                        borderRadius: BorderRadius.circular(6),
                         color: statusColor),
                     child: Center(
-                      child: Text(
-                        ((status ?? "").capitalizeFirst ?? '').tr,
-                        style: AppTextStyle.textStyle10WhiteW400,
-                      ),
+                      child: FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Text(((status ?? "").capitalizeFirst ?? '').tr,
+                              style: AppTextStyle.textStyle10WhiteW400,
+                              maxLines: 1)),
                     ),
                   )
                 : const SizedBox(),
@@ -84,13 +85,14 @@ class BankPaymentTile extends StatelessWidget {
                     width: Get.width * 0.2,
                     padding: const EdgeInsets.all(5),
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(3),
+                        borderRadius: BorderRadius.circular(6),
                         color: AppColors.primaryColor),
                     child: Center(
-                      child: Text(
-                        "Details".tr,
-                        style: AppTextStyle.textStyle10WhiteW400,
-                      ),
+                      child: FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Text("Details".tr,
+                              style: AppTextStyle.textStyle10WhiteW400,
+                              maxLines: 1)),
                     ),
                   ),
                 ),

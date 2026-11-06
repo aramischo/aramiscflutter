@@ -24,7 +24,7 @@ class AdminContentListController extends GetxController {
       loadingController.isLoading = true;
 
       final response = await BaseClient().getData(
-          url: globalRxVariableController.roleId.value == 1
+          url: globalRxVariableController.isAdmin
               ? AramiscApi.getAdminContentList
               : AramiscApi.getTeacherContentList,
           header: GlobalVariable.header);
@@ -63,7 +63,7 @@ class AdminContentListController extends GetxController {
       deleteLoader.value = true;
 
       final response = await BaseClient().postData(
-          url: globalRxVariableController.roleId.value == 1
+          url: globalRxVariableController.isAdmin
               ? AramiscApi.adminContentDelete(contentId: contentId)
               : AramiscApi.teacherContentDelete(contentId: contentId),
           header: GlobalVariable.header);

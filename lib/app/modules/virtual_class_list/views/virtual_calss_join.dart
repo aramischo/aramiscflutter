@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+import 'package:aramisc/app/database/auth_database.dart';
 import 'package:aramisc/app/utilities/widgets/common_widgets/custom_scaffold_widget.dart';
 import 'package:aramisc/config/app_config.dart';
 import 'package:aramisc/config/global_variable/global_variable_controller.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class ClassOrMeetingView extends StatefulWidget {
@@ -21,9 +21,7 @@ class _ClassOrMeetingViewState extends State<ClassOrMeetingView> {
   InAppWebViewController? webViewController;
   bool isLoginAttempted = false;
   bool isLoading = true; // Track loading state
-  final GetStorage _box = GetStorage();
   var email = '';
-  var pass = '';
 
   static String domainName = AppConfig.domainName;
   static String loginUrl = '$domainName/login';
@@ -34,7 +32,6 @@ class _ClassOrMeetingViewState extends State<ClassOrMeetingView> {
     super.initState();
     _requestPermissions();
     email = Get.find<GlobalRxVariableController>().email.value!;
-    pass = _box.read('password') ?? "123456";
   }
 
   Future<void> _requestPermissions() async {
@@ -123,7 +120,8 @@ class _ClassOrMeetingViewState extends State<ClassOrMeetingView> {
 
   // Method to attempt auto-login
   Future<void> _attemptAutoLogin(InAppWebViewController controller) async {
-    print("Attempting to auto-login with email: $email and password: $pass");
+    final pass = await AuthDatabase.instance.getPassword();
+    if (pass == null) return;
 
     await controller.evaluateJavascript(source: """
     document.querySelector('input[name="email"]').value = '${email.replaceAll("'", "\\'")}';

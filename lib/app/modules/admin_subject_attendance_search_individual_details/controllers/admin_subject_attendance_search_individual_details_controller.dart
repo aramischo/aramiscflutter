@@ -50,7 +50,7 @@ class AdminSubjectAttendanceSearchIndividualDetailsController
       isLoading.value = true;
 
       final response = await BaseClient().getData(
-        url: globalRxVariableController.roleId.value == 1
+        url: globalRxVariableController.isAdmin
             ? AramiscApi.getAdminSubAttenSearchDetailsList(
                 recordId: recordId,
                 subjectNameId: subjectNameId,
@@ -137,7 +137,7 @@ class AdminSubjectAttendanceSearchIndividualDetailsController
       attendanceList.clear();
       eventList?.clear();
       final response = await BaseClient().getData(
-        url: globalRxVariableController.roleId.value == 1
+        url: globalRxVariableController.isAdmin
             ? AramiscApi.getAdminSubAttenSearchDetailsWithDateList(
                 recordId: recordId,
                 subjectNameId: subjectNameId,

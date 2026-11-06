@@ -32,7 +32,7 @@ class AdminClassAttendanceSearchIndividualListController
       isLoading.value = true;
 
       final response = await BaseClient().getData(
-          url: globalRxVariableController.roleId.value == 1
+          url: globalRxVariableController.isAdmin
               ? AramiscApi.getAdminSubAttenSearchIndividualList(
                   classId: classId,
                   sectionId: sectionId,

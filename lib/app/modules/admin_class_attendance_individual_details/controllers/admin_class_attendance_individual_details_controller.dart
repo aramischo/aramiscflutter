@@ -47,7 +47,7 @@ class AdminClassAttendanceIndividualDetailsController extends GetxController {
       isLoading.value = true;
 
       final response = await BaseClient().getData(
-        url: globalRxVariableController.roleId.value == 1
+        url: globalRxVariableController.isAdmin
             ? AramiscApi.getAdminStudentSearchDetailsList(
                 studentAttendanceId: studentAttendanceId)
             : AramiscApi.getTeacherStudentSearchDetailsList(
@@ -121,7 +121,7 @@ class AdminClassAttendanceIndividualDetailsController extends GetxController {
       isLoading.value = true;
 
       final response = await BaseClient().getData(
-        url: globalRxVariableController.roleId.value == 1
+        url: globalRxVariableController.isAdmin
             ? AramiscApi.getAdminStudentSearchDetailsListWithDate(
                 studentAttendanceId: studentAttendanceId,
                 month: month,

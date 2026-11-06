@@ -362,7 +362,7 @@ class AppTextStyle {
   static TextStyle fontSize14Color862CFFWight600 = TextStyle(
     fontSize: setTextSize(size: 14),
     fontFamily: 'Popins',
-    color: Color(0xFF862CFF),
+    color: AppColors.primaryColor,
     fontWeight: FontWeight.w600,
   );
 

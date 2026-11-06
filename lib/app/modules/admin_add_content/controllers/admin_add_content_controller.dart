@@ -91,7 +91,7 @@ class AdminAddContentController extends GetxController {
       debugPrint('${Uri.parse(AramiscApi.postAdminContent)}');
       final request = http.MultipartRequest(
           'POST',
-          Uri.parse(globalRxVariableController.roleId.value == 1
+          Uri.parse(globalRxVariableController.isAdmin
               ? AramiscApi.postAdminContent
               : AramiscApi.postTeacherContent));
       request.headers.addAll(GlobalVariable.header);

@@ -95,8 +95,8 @@ class BookListTile extends StatelessWidget {
                         child: Container(
                           padding: const EdgeInsets.all(7),
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(2),
-                            color: const Color(0xFF862CFF),
+                            borderRadius: BorderRadius.circular(6),
+                            color: AppColors.primaryColor,
                           ),
                           child: Center(
                             child: Text(

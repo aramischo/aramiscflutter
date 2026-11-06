@@ -13,6 +13,7 @@ import 'package:aramisc/domain/core/model/student_record/student_record_response
 import 'package:get/get.dart';
 import '../../../../config/global_variable/global_variable_controller.dart';
 import '../../../../domain/base_client/base_client.dart';
+import '../../../../push_notification/app_push_notification.dart';
 import '../../../../push_notification/notification_permission.dart';
 import '../../../database/auth_database.dart';
 import '../../../utilities/widgets/loader/loading.controller.dart';
@@ -295,6 +296,12 @@ class HomeController extends GetxController {
       debugPrint('$e');
       debugPrint('$t');
     }
+  }
+
+  @override
+  void onReady() {
+    super.onReady();
+    openPendingNotifications();
   }
 
   @override

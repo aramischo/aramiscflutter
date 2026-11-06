@@ -55,7 +55,7 @@ class DashboardView extends GetView<DashboardController> {
           navItem(icon: Iconsax.home_2, title: 'Home'.tr),
           navItem(
               icon: FontAwesomeIcons.bell,
-              title: 'Notification'.tr,
+              title: 'Nav Notifications'.tr,
               isNotification: true),
           Get.find<GlobalRxVariableController>().roleId.value == 4
               ? navItemWithImageIcon(
@@ -74,7 +74,7 @@ class DashboardView extends GetView<DashboardController> {
                       imagePath: ImagePath.adminClass, title: 'Class'.tr),
           Get.find<GlobalRxVariableController>().roleId.value == 4
               ? navItem(icon: Iconsax.teacher, title: 'Academic'.tr)
-              : navItem(icon: Iconsax.menu_board, title: 'Routine'.tr),
+              : navItem(icon: Iconsax.menu_board, title: 'Nav Routine'.tr),
           Get.find<GlobalRxVariableController>().roleId.value == 4
               ? navItem(icon: Iconsax.book, title: 'Homework'.tr)
               : navItem(icon: Iconsax.user, title: 'Profile'.tr),

@@ -126,7 +126,7 @@ class ChildHomeView extends GetView<ChildHomeController> {
                   controller.logout();
                 },
                 title: 'Confirmation'.tr,
-                subTitle: "${"Are you sure".tr}\n${"you want to logout".tr}?",
+                subTitle: 'Would you like to logout?'.tr,
                 noText: 'Cancel'.tr,
                 yesText: 'Logout'.tr,
               ),

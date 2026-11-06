@@ -297,7 +297,7 @@ class ProfileController extends GetxController {
                   height: Get.height * 0.1,
                   width: Get.width,
                   padding: const EdgeInsets.all(20),
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                       borderRadius: BorderRadius.only(
                         topRight: Radius.circular(8),
                         topLeft: Radius.circular(8),
@@ -372,7 +372,7 @@ class ProfileController extends GetxController {
                       ),
                       Obx(
                         () => saveLoader.value == true
-                            ? const CircularProgressIndicator(
+                            ? CircularProgressIndicator(
                                 color: AppColors.primaryColor,
                               )
                             : SecondaryButton(
@@ -434,7 +434,7 @@ class ProfileController extends GetxController {
             .add(await http.MultipartFile.fromPath('photo', file.value.path));
       }
 
-      if (globalRxVariableController.roleId.value == 1) {
+      if (globalRxVariableController.isAdmin) {
         request.fields['student_id'] = studentIdFromAdmin.toString();
       } else {
         request.fields['student_id'] =

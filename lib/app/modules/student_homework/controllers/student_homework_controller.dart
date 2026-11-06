@@ -193,7 +193,7 @@ class StudentHomeworkController extends GetxController {
                               ),
                               Obx(
                                 () => saveLoader.value == true
-                                    ? const CircularProgressIndicator(
+                                    ? CircularProgressIndicator(
                                         color: AppColors.primaryColor,
                                       )
                                     : SecondaryButton(

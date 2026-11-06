@@ -151,7 +151,7 @@ class HomeworkTile extends StatelessWidget {
                               padding: const EdgeInsets.symmetric(
                                   vertical: 7, horizontal: 4),
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(2),
+                                borderRadius: BorderRadius.circular(6),
                                 color: AppColors.profileValueColor,
                               ),
                               child: Center(
@@ -170,7 +170,7 @@ class HomeworkTile extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(
                               vertical: 7, horizontal: 4),
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(2),
+                            borderRadius: BorderRadius.circular(6),
                             color: evaluateContainerColor,
                           ),
                           child: Center(

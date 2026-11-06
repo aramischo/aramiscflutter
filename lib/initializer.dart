@@ -12,6 +12,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'app/database/auth_database.dart';
 import 'app/utilities/widgets/loader/loading.controller.dart';
 import 'config.dart';
+import 'app/data/constants/app_colors.dart';
 import 'config/global_variable/app_settings_controller.dart';
 import 'firebase_options.dart';
 
@@ -121,6 +122,8 @@ class Initializer {
   static Future<void> _initStorage() async {
     await GetStorage.init();
     Get.put(GetStorage());
+    // Couleurs choisies dans le back-office, mémorisées au lancement précédent
+    AppColors.loadSaved();
 
     await GetStorage.init(AuthDBKeys.dbName);
   }

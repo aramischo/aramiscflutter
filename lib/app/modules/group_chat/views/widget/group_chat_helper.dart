@@ -44,7 +44,7 @@ class GroupChatHelper {
           height: 40.h,
           child: PopupItemTile(title: "Members".tr),
         ),
-        if (globalRxVariableController.roleId.value == 1)
+        if (globalRxVariableController.isAdmin)
           PopupMenuItem(
             value: 4,
             height: 40.h,

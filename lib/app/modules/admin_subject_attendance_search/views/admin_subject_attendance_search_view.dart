@@ -40,7 +40,7 @@ class AdminSubjectAttendanceSearchView
                   /// Student Class List
                   controller.adminStudentsSearchController.loadingController
                           .isLoading
-                      ? const Center(
+                      ? Center(
                           child: CircularProgressIndicator(
                             color: AppColors.primaryColor,
                           ),
@@ -77,7 +77,7 @@ class AdminSubjectAttendanceSearchView
                   ),
                   10.h.verticalSpacing,
                   controller.adminStudentsSearchController.sectionLoader.value
-                      ? const Center(
+                      ? Center(
                           child: CircularProgressIndicator(
                             color: AppColors.primaryColor,
                           ),
@@ -117,7 +117,7 @@ class AdminSubjectAttendanceSearchView
                   ),
                   10.h.verticalSpacing,
                   controller.adminStudentsSearchController.subjectLoader.value
-                      ? const Center(
+                      ? Center(
                           child: CircularProgressIndicator(
                             color: AppColors.primaryColor,
                           ),

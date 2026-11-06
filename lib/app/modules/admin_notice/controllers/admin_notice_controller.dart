@@ -24,7 +24,7 @@ class AdminNoticeController extends GetxController {
       loadingController.isLoading = true;
 
       final response = await BaseClient().getData(
-          url: globalRxVariableController.roleId.value == 1
+          url: globalRxVariableController.isAdmin
               ? AramiscApi.getAdminStaffNoticeList
               : AramiscApi.getTeacherNoticeList,
           header: GlobalVariable.header);

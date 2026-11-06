@@ -1,3 +1,4 @@
+import 'package:aramisc/app/data/constants/app_colors.dart';
 // ignore_for_file: library_private_types_in_public_api
 
 import 'dart:io';
@@ -76,12 +77,12 @@ class _LaunchWebViewState extends State<LaunchWebView> {
             automaticallyImplyLeading: false,
             flexibleSpace: Container(
               padding: const EdgeInsets.only(top: 20),
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage(ImagePath.appToolbarBg),
                   fit: BoxFit.fill,
                 ),
-                color: Colors.deepPurple,
+                color: AppColors.primaryColor,
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,

@@ -117,7 +117,7 @@ class AdminAddContentView extends GetView<AdminAddContentController> {
                   controller.isStudentSelected.value &&
                           controller.isAllStudent.value == false
                       ? controller.loadingController.isLoading
-                          ? const CircularProgressIndicator(
+                          ? CircularProgressIndicator(
                               color: AppColors.primaryColor,
                             )
                           : DuplicateDropdown(
@@ -146,7 +146,7 @@ class AdminAddContentView extends GetView<AdminAddContentController> {
                   controller.isStudentSelected.value &&
                           controller.isAllStudent.value == false
                       ? controller.sectionLoader.value
-                          ? const CircularProgressIndicator(
+                          ? CircularProgressIndicator(
                               color: AppColors.primaryColor,
                             )
                           : DuplicateDropdown(

@@ -245,7 +245,7 @@ class AdminRouteController extends GetxController {
                 height: Get.height * 0.1,
                 width: Get.width,
                 padding: const EdgeInsets.all(20),
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
                     topRight: Radius.circular(8),
                     topLeft: Radius.circular(8),

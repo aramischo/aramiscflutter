@@ -69,7 +69,7 @@ class AdminBookListView extends GetView<AdminBookListController> {
             Obx(
               () => Expanded(
                 child: controller.loadingController.isLoading
-                    ? const Center(
+                    ? Center(
                         child: CircularProgressIndicator(
                           color: AppColors.primaryColor,
                         ),
